@@ -17,6 +17,7 @@
 		55A5F1C11EE68AE300C39509 /* ZZIdentifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C01EE68AE300C39509 /* ZZIdentifyViewController.m */; };
 		55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */; };
 		55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C71EE68B5400C39509 /* ZZMaskView.m */; };
+		55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCreateViewController.m; sourceTree = "<group>"; };
 		55A5F1C61EE68B5400C39509 /* ZZMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMaskView.h; sourceTree = "<group>"; };
 		55A5F1C71EE68B5400C39509 /* ZZMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMaskView.m; sourceTree = "<group>"; };
+		55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTextViewController.h; sourceTree = "<group>"; };
+		55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				55A5F1C51EE68B1400C39509 /* View */,
 				55A5F1BC1EE68A2E00C39509 /* ZZScanningViewController.h */,
 				55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */,
+				55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */,
+				55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */,
 			);
 			path = Scanning;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 			files = (
 				55A5F1C11EE68AE300C39509 /* ZZIdentifyViewController.m in Sources */,
 				55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */,
+				55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */,
 				55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */,
 				55A5F1881EE688CF00C39509 /* main.m in Sources */,
 				55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */,

@@ -16,7 +16,7 @@
 
 @implementation ZZMaskView
 
-- (instancetype)ZZMaskView {
++ (instancetype)maskView {
     
     ZZMaskView *maskView = [[ZZMaskView alloc] init];
     
@@ -40,11 +40,8 @@
     self.lineLayer = [CALayer layer];
     self.lineLayer.contents = (id)[UIImage imageNamed:@"scanningLine"].CGImage;
     [self.layer addSublayer:self.lineLayer];
-    [self resumeAnimation];
+    [self repetitionAnimation];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resumeAnimation) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopAnimation) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
 }
 
@@ -74,6 +71,8 @@
     
     CGContextRestoreGState(contextRef);
     self.layer.contentsGravity = kCAGravityCenter;
+    
+
 }
 
 - (void)layoutSubviews
@@ -89,7 +88,7 @@
     [self.lineLayer removeAnimationForKey:@"translationY"];
 }
 
-- (void)resumeAnimation
+- (void)repetitionAnimation
 {
     CABasicAnimation *basic = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
     basic.fromValue = @(0);

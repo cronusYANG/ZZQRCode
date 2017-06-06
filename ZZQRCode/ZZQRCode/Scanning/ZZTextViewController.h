@@ -1,5 +1,5 @@
 //
-//  ZZMaskView.h
+//  ZZTextViewController.h
 //  ZZQRCode
 //
 //  Created by POPLAR on 2017/6/6.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZZMaskView : UIView
-+ (instancetype)maskView;
-- (void)repetitionAnimation;
+@interface ZZTextViewController : UIViewController
+
+@property (strong,nonatomic) NSString *contentStr;
+
 @end
