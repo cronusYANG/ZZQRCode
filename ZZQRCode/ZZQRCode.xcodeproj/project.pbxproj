@@ -18,6 +18,7 @@
 		55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */; };
 		55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C71EE68B5400C39509 /* ZZMaskView.m */; };
 		55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */; };
+		5B2EEEB28D853E64120F6638 /* libPods-ZZQRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZZQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1831EE688CF00C39509 /* ZZQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1871EE688CF00C39509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55A5F1891EE688CF00C39509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +63,9 @@
 		55A5F1C71EE68B5400C39509 /* ZZMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMaskView.m; sourceTree = "<group>"; };
 		55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTextViewController.h; sourceTree = "<group>"; };
 		55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTextViewController.m; sourceTree = "<group>"; };
+		55A5F1CC1EE6B01900C39509 /* ZZQRCode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZQRCode-Prefix.pch"; sourceTree = "<group>"; };
+		93B94B3863A10AFF7A24E749 /* Pods-ZZQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZQRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode.debug.xcconfig"; sourceTree = "<group>"; };
+		C8C76D64388899F45605B8B6 /* Pods-ZZQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B2EEEB28D853E64120F6638 /* libPods-ZZQRCode.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43C50646713C964F267DE0EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93B94B3863A10AFF7A24E749 /* Pods-ZZQRCode.debug.xcconfig */,
+				C8C76D64388899F45605B8B6 /* Pods-ZZQRCode.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		55A5F17A1EE688CF00C39509 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +110,8 @@
 				55A5F19F1EE688CF00C39509 /* ZZQRCodeTests */,
 				55A5F1AA1EE688CF00C39509 /* ZZQRCodeUITests */,
 				55A5F1841EE688CF00C39509 /* Products */,
+				43C50646713C964F267DE0EC /* Pods */,
+				D98CBB618A49D959887EDE0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				55A5F1871EE688CF00C39509 /* main.m */,
+				55A5F1CC1EE6B01900C39509 /* ZZQRCode-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,6 +207,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D98CBB618A49D959887EDE0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55A5F1B01EE688CF00C39509 /* Build configuration list for PBXNativeTarget "ZZQRCode" */;
 			buildPhases = (
+				C26F3E1A3A39A3FE39439D3D /* [CP] Check Pods Manifest.lock */,
 				55A5F17F1EE688CF00C39509 /* Sources */,
 				55A5F1801EE688CF00C39509 /* Frameworks */,
 				55A5F1811EE688CF00C39509 /* Resources */,
+				1BC125B749E12D7FAFEB640D /* [CP] Embed Pods Frameworks */,
+				E84C5FAAF29C1EF851698C64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,6 +349,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BC125B749E12D7FAFEB640D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C26F3E1A3A39A3FE39439D3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E84C5FAAF29C1EF851698C64 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		55A5F17F1EE688CF00C39509 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -409,6 +486,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -455,6 +534,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -470,9 +551,12 @@
 		};
 		55A5F1B11EE688CF00C39509 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93B94B3863A10AFF7A24E749 /* Pods-ZZQRCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XBD2EDB9AY;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				INFOPLIST_FILE = ZZQRCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.Yang.ZZQRCode;
@@ -482,9 +566,12 @@
 		};
 		55A5F1B21EE688CF00C39509 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8C76D64388899F45605B8B6 /* Pods-ZZQRCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XBD2EDB9AY;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				INFOPLIST_FILE = ZZQRCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.Yang.ZZQRCode;
@@ -561,6 +648,7 @@
 				55A5F1B21EE688CF00C39509 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55A5F1B31EE688CF00C39509 /* Build configuration list for PBXNativeTarget "ZZQRCodeTests" */ = {
 			isa = XCConfigurationList;
@@ -569,6 +657,7 @@
 				55A5F1B51EE688CF00C39509 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55A5F1B61EE688CF00C39509 /* Build configuration list for PBXNativeTarget "ZZQRCodeUITests" */ = {
 			isa = XCConfigurationList;
@@ -577,6 +666,7 @@
 				55A5F1B81EE688CF00C39509 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

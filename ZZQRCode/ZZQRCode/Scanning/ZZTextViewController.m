@@ -27,15 +27,13 @@
 
 -(void)setupUI{
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64)];
+    UILabel *label = [[UILabel alloc] init];
     
-//    [label sizeToFit];
+    [label sizeToFit];
     
-    label.font = [UIFont systemFontOfSize:13];
+    label.font = [UIFont systemFontOfSize:20];
     
     label.numberOfLines = 0;
-    
-    label.textAlignment = NSTextAlignmentCenter;
     
     label.textColor = [UIColor blackColor];
     
@@ -46,6 +44,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"扫描结果";
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.offset(4);
+        make.right.offset(-4);
+        make.top.offset(64);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

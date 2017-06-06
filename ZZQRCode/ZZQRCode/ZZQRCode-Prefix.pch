@@ -1,0 +1,22 @@
+//
+//  ZZQRCode-Prefix.pch
+//  ZZQRCode
+//
+//  Created by POPLAR on 2017/6/6.
+//  Copyright © 2017年 user. All rights reserved.
+//
+
+#ifndef ZZQRCode_Prefix_pch
+#define ZZQRCode_Prefix_pch
+
+
+#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
+#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
+
+
+#import "Masonry.h"
+#import "MJRefresh.h"
+#import "SVProgressHUD.h"
+
+
+#endif /* ZZQRCode_Prefix_pch */
