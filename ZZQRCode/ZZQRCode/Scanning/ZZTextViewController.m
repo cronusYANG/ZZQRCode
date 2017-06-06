@@ -35,6 +35,8 @@
     
     label.numberOfLines = 0;
     
+    label.isCopyable = YES;
+    
     label.textColor = [UIColor blackColor];
     
     label.text = self.contentStr;

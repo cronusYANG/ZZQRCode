@@ -18,6 +18,7 @@
 		55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */; };
 		55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C71EE68B5400C39509 /* ZZMaskView.m */; };
 		55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */; };
+		55A5F1D01EE6B5ED00C39509 /* UILabel+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CF1EE6B5ED00C39509 /* UILabel+Copy.m */; };
 		5B2EEEB28D853E64120F6638 /* libPods-ZZQRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTextViewController.h; sourceTree = "<group>"; };
 		55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTextViewController.m; sourceTree = "<group>"; };
 		55A5F1CC1EE6B01900C39509 /* ZZQRCode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZQRCode-Prefix.pch"; sourceTree = "<group>"; };
+		55A5F1CE1EE6B5ED00C39509 /* UILabel+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copy.h"; sourceTree = "<group>"; };
+		55A5F1CF1EE6B5ED00C39509 /* UILabel+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copy.m"; sourceTree = "<group>"; };
 		93B94B3863A10AFF7A24E749 /* Pods-ZZQRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZQRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode.debug.xcconfig"; sourceTree = "<group>"; };
 		C8C76D64388899F45605B8B6 /* Pods-ZZQRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZQRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZQRCode/Pods-ZZQRCode.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +136,7 @@
 				55A5F1BB1EE689F100C39509 /* Scanning */,
 				55A5F1891EE688CF00C39509 /* AppDelegate.h */,
 				55A5F18A1EE688CF00C39509 /* AppDelegate.m */,
+				55A5F1CD1EE6B5ED00C39509 /* Category */,
 				55A5F1921EE688CF00C39509 /* Assets.xcassets */,
 				55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */,
 				55A5F1971EE688CF00C39509 /* Info.plist */,
@@ -205,6 +209,15 @@
 				55A5F1C71EE68B5400C39509 /* ZZMaskView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		55A5F1CD1EE6B5ED00C39509 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				55A5F1CE1EE6B5ED00C39509 /* UILabel+Copy.h */,
+				55A5F1CF1EE6B5ED00C39509 /* UILabel+Copy.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		D98CBB618A49D959887EDE0A /* Frameworks */ = {
@@ -407,6 +420,7 @@
 				55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */,
 				55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */,
 				55A5F1881EE688CF00C39509 /* main.m in Sources */,
+				55A5F1D01EE6B5ED00C39509 /* UILabel+Copy.m in Sources */,
 				55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */,
 				55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */,
 			);

@@ -18,5 +18,7 @@
 #import "MJRefresh.h"
 #import "SVProgressHUD.h"
 
+#import "UILabel+Copy.h"
+
 
 #endif /* ZZQRCode_Prefix_pch */
