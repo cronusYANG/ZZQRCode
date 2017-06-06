@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ZZScanningViewController.h
 //  ZZQRCode
 //
 //  Created by POPLAR on 2017/6/6.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ZZScanningViewController : UIViewController
 
 @end
-

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ZZScanningViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    ZZScanningViewController *vc = [[ZZScanningViewController alloc] init];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    self.window.rootViewController = nav;
+    
     // Override point for customization after application launch.
     return YES;
 }

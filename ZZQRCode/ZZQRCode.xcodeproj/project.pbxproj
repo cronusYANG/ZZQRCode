@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		55A5F1881EE688CF00C39509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1871EE688CF00C39509 /* main.m */; };
 		55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F18A1EE688CF00C39509 /* AppDelegate.m */; };
-		55A5F18E1EE688CF00C39509 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F18D1EE688CF00C39509 /* ViewController.m */; };
-		55A5F1911EE688CF00C39509 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F18F1EE688CF00C39509 /* Main.storyboard */; };
 		55A5F1931EE688CF00C39509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F1921EE688CF00C39509 /* Assets.xcassets */; };
 		55A5F1961EE688CF00C39509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */; };
 		55A5F1A11EE688CF00C39509 /* ZZQRCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1A01EE688CF00C39509 /* ZZQRCodeTests.m */; };
 		55A5F1AC1EE688CF00C39509 /* ZZQRCodeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1AB1EE688CF00C39509 /* ZZQRCodeUITests.m */; };
+		55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */; };
+		55A5F1C11EE68AE300C39509 /* ZZIdentifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C01EE68AE300C39509 /* ZZIdentifyViewController.m */; };
+		55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */; };
+		55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C71EE68B5400C39509 /* ZZMaskView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +41,6 @@
 		55A5F1871EE688CF00C39509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55A5F1891EE688CF00C39509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55A5F18A1EE688CF00C39509 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		55A5F18C1EE688CF00C39509 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		55A5F18D1EE688CF00C39509 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		55A5F1901EE688CF00C39509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55A5F1921EE688CF00C39509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55A5F1951EE688CF00C39509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55A5F1971EE688CF00C39509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +50,14 @@
 		55A5F1A71EE688CF00C39509 /* ZZQRCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZZQRCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1AB1EE688CF00C39509 /* ZZQRCodeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZQRCodeUITests.m; sourceTree = "<group>"; };
 		55A5F1AD1EE688CF00C39509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A5F1BC1EE68A2E00C39509 /* ZZScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZScanningViewController.h; sourceTree = "<group>"; };
+		55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZScanningViewController.m; sourceTree = "<group>"; };
+		55A5F1BF1EE68AE300C39509 /* ZZIdentifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZIdentifyViewController.h; sourceTree = "<group>"; };
+		55A5F1C01EE68AE300C39509 /* ZZIdentifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZIdentifyViewController.m; sourceTree = "<group>"; };
+		55A5F1C21EE68AF300C39509 /* ZZCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCreateViewController.h; sourceTree = "<group>"; };
+		55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCreateViewController.m; sourceTree = "<group>"; };
+		55A5F1C61EE68B5400C39509 /* ZZMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMaskView.h; sourceTree = "<group>"; };
+		55A5F1C71EE68B5400C39509 /* ZZMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMaskView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +108,11 @@
 		55A5F1851EE688CF00C39509 /* ZZQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				55A5F1B91EE689F100C39509 /* Create */,
+				55A5F1BA1EE689F100C39509 /* Identify */,
+				55A5F1BB1EE689F100C39509 /* Scanning */,
 				55A5F1891EE688CF00C39509 /* AppDelegate.h */,
 				55A5F18A1EE688CF00C39509 /* AppDelegate.m */,
-				55A5F18C1EE688CF00C39509 /* ViewController.h */,
-				55A5F18D1EE688CF00C39509 /* ViewController.m */,
-				55A5F18F1EE688CF00C39509 /* Main.storyboard */,
 				55A5F1921EE688CF00C39509 /* Assets.xcassets */,
 				55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */,
 				55A5F1971EE688CF00C39509 /* Info.plist */,
@@ -138,6 +145,43 @@
 				55A5F1AD1EE688CF00C39509 /* Info.plist */,
 			);
 			path = ZZQRCodeUITests;
+			sourceTree = "<group>";
+		};
+		55A5F1B91EE689F100C39509 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				55A5F1C21EE68AF300C39509 /* ZZCreateViewController.h */,
+				55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		55A5F1BA1EE689F100C39509 /* Identify */ = {
+			isa = PBXGroup;
+			children = (
+				55A5F1BF1EE68AE300C39509 /* ZZIdentifyViewController.h */,
+				55A5F1C01EE68AE300C39509 /* ZZIdentifyViewController.m */,
+			);
+			path = Identify;
+			sourceTree = "<group>";
+		};
+		55A5F1BB1EE689F100C39509 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				55A5F1C51EE68B1400C39509 /* View */,
+				55A5F1BC1EE68A2E00C39509 /* ZZScanningViewController.h */,
+				55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
+		55A5F1C51EE68B1400C39509 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55A5F1C61EE68B5400C39509 /* ZZMaskView.h */,
+				55A5F1C71EE68B5400C39509 /* ZZMaskView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +246,7 @@
 		55A5F17B1EE688CF00C39509 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZZ;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = user;
 				TargetAttributes = {
@@ -251,7 +296,6 @@
 			files = (
 				55A5F1961EE688CF00C39509 /* LaunchScreen.storyboard in Resources */,
 				55A5F1931EE688CF00C39509 /* Assets.xcassets in Resources */,
-				55A5F1911EE688CF00C39509 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,9 +320,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A5F18E1EE688CF00C39509 /* ViewController.m in Sources */,
+				55A5F1C11EE68AE300C39509 /* ZZIdentifyViewController.m in Sources */,
 				55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */,
+				55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */,
 				55A5F1881EE688CF00C39509 /* main.m in Sources */,
+				55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */,
+				55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,14 +361,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		55A5F18F1EE688CF00C39509 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55A5F1901EE688CF00C39509 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
