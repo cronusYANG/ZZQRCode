@@ -11,12 +11,14 @@
 #import "ZZMaskView.h"
 #import "ZZTextViewController.h"
 
-#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
-#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *session;
+
+@property (strong,nonatomic) AVCaptureVideoPreviewLayer *layer;
+
+@property (nonatomic, strong) AVCaptureConnection *connection;
 
 @property (nonatomic, assign) BOOL flashOpen;
 
@@ -49,14 +51,20 @@
     
     [self setupUI];
     
-    AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
-    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    layer.frame = self.view.layer.bounds;
-    [self.view.layer insertSublayer:layer atIndex:0];
     
     self.view.backgroundColor = [UIColor blueColor];
     
 }
+
+#pragma mark 设置焦距
+- (void)setFocalLength:(CGFloat)lengthScale
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [_layer setAffineTransform:CGAffineTransformMakeScale(lengthScale, lengthScale)];
+        _connection.videoScaleAndCropFactor = lengthScale;
+    }];
+}
+
 
 -(void)setupUI{
     
@@ -65,6 +73,13 @@
     _maskView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
     
     [self.view addSubview:_maskView];
+    
+    _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
+    _layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    
+    _layer.frame = self.view.layer.bounds;
+    [self.view.layer insertSublayer:_layer atIndex:0];
+
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -94,6 +109,7 @@
         _session = ({
             //获取摄像设备
             AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+            
             //创建输入流
             AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
             if (!input)
@@ -115,6 +131,7 @@
             [session setSessionPreset:AVCaptureSessionPresetHigh];
             [session addInput:input];
             [session addOutput:output];
+
             
             //设置编码 二维&条形
             output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode,

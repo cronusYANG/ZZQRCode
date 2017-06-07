@@ -42,7 +42,17 @@
     [self.layer addSublayer:self.lineLayer];
     [self repetitionAnimation];
     
+    UIButton *lightBtn = [[UIButton alloc] init];
+    lightBtn.backgroundColor = [UIColor redColor];
+    [self addSubview:lightBtn];
     
+    [lightBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(self.mas_centerX).offset(0);
+        make.bottom.offset(-50);
+        make.height.width.offset(50);
+    }];
+    
+    self.lightBtn = lightBtn;
 }
 
 - (void)drawRect:(CGRect)rect

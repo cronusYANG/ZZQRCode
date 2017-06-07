@@ -8,9 +8,6 @@
 
 #import "ZZTextViewController.h"
 
-#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
-#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
-
 @interface ZZTextViewController ()
 
 @end

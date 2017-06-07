@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ZZMaskView : UIView
+
+@property (strong,nonatomic) UIButton *lightBtn;
+
 + (instancetype)maskView;
 - (void)repetitionAnimation;
 @end

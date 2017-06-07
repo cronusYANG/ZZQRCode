@@ -19,6 +19,8 @@
 #import "SVProgressHUD.h"
 
 #import "UILabel+Copy.h"
+#import "UIButton+Block.h"
+#import "UIColor+Addition.h"
 
 
 #endif /* ZZQRCode_Prefix_pch */
