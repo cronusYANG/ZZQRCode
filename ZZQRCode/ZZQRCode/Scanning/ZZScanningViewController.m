@@ -74,12 +74,44 @@
     
     [self.view addSubview:_maskView];
     
+    [_maskView.lightBtn addTarget:self action:@selector(openLight:) forControlEvents:UIControlEventTouchDown];
+    
     _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     _layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
     _layer.frame = self.view.layer.bounds;
     [self.view.layer insertSublayer:_layer atIndex:0];
 
+}
+
+-(void)openLight:(UIButton *)sender{
+    
+    sender.selected = !sender.selected;
+    if (sender.isSelected == YES) { //打开闪光灯
+        AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        NSError *error = nil;
+        
+        if ([captureDevice hasTorch]) {
+            BOOL locked = [captureDevice lockForConfiguration:&error];
+            if (locked) {
+                captureDevice.torchMode = AVCaptureTorchModeOn;
+                [captureDevice unlockForConfiguration];
+            }
+        }
+        
+        [sender setBackgroundColor:[UIColor blueColor]];
+        
+    }else{//关闭闪光灯
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch]) {
+            [device lockForConfiguration:nil];
+            [device setTorchMode: AVCaptureTorchModeOff];
+            [device unlockForConfiguration];
+        }
+        
+        [sender setBackgroundColor:[UIColor redColor]];
+    }
+    
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -138,6 +170,7 @@
                                            AVMetadataObjectTypeEAN13Code,
                                            AVMetadataObjectTypeEAN8Code,
                                            AVMetadataObjectTypeCode128Code];
+            
             
             session;
         });
