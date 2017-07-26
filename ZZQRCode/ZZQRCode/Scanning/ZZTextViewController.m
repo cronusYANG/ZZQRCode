@@ -38,6 +38,12 @@
     
     label.text = self.contentStr;
     
+    BOOL isURL = [self getUrlLink:self.contentStr];
+    
+    if (isURL) {
+        label.textColor = [UIColor redColor];
+    }
+    
     [self.view addSubview:label];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -49,6 +55,17 @@
         make.right.offset(-4);
         make.top.offset(64);
     }];
+}
+
+- (BOOL)getUrlLink:(NSString *)link {
+    
+    NSString *regTags = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regTags];
+    
+    BOOL isValid = [predicate evaluateWithObject:link];
+    
+    return isValid;
 }
 
 - (void)didReceiveMemoryWarning {

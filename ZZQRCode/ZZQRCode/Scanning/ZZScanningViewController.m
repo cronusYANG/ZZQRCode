@@ -10,6 +10,7 @@
 #import "ZZScanningViewController.h"
 #import "ZZMaskView.h"
 #import "ZZTextViewController.h"
+#import "ZZWebViewController.h"
 
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -148,11 +149,27 @@
         {
             CIQRCodeFeature *feature = [features firstObject];
             
-            ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
+            NSString *str = [NSString stringWithFormat:@"%@",feature];
             
-            tVC.contentStr = [NSString stringWithFormat:@"%@",feature];
+            BOOL isURL = [self getUrlLink:str];
             
-            [self.navigationController pushViewController:tVC animated:YES];
+            if (isURL) {
+                
+                ZZWebViewController *webVC = [[ZZWebViewController alloc] init];
+                
+                webVC.url = str;
+                
+                [self.navigationController pushViewController:webVC animated:YES];
+                
+            }else{
+                ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
+                
+                tVC.contentStr = str;
+                
+                [self.navigationController pushViewController:tVC animated:YES];
+            }
+            
+            
         }
         else
         {
@@ -171,11 +188,28 @@
         
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];
         
-        ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
+//        NSString *str = [NSString stringWithFormat:@"%@",metadataObject];
         
-        tVC.contentStr = metadataObject.stringValue;
+        BOOL isURL = [self getUrlLink:metadataObject.stringValue];
         
-        [self.navigationController pushViewController:tVC animated:YES];
+        if (isURL) {
+            
+            ZZWebViewController *webVC = [[ZZWebViewController alloc] init];
+            
+            webVC.url = metadataObject.stringValue;
+            
+            [self.navigationController pushViewController:webVC animated:YES];
+            
+        }else{
+            
+            ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
+            
+            tVC.contentStr = metadataObject.stringValue;
+            
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        
+        
      
     }
 }
@@ -225,6 +259,17 @@
     }
     
     return _session;
+}
+
+- (BOOL)getUrlLink:(NSString *)link {
+    
+    NSString *regTags = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regTags];
+    
+    BOOL isValid = [predicate evaluateWithObject:link];
+    
+    return isValid;
 }
 
 

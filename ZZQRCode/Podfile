@@ -6,9 +6,6 @@ target 'ZZQRCode' do
   # use_frameworks!
 pod ‘Masonry’
 pod 'SVProgressHUD'
-pod 'SDWebImage', '~> 3.8.1'
-pod 'AFNetworking', '~> 3.1.0'
-pod 'MJRefresh'
   # Pods for ZZQRCode
 
 
