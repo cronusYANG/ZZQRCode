@@ -43,7 +43,12 @@
     [self repetitionAnimation];
     
     UIButton *lightBtn = [[UIButton alloc] init];
-    lightBtn.backgroundColor = [UIColor redColor];
+    lightBtn.backgroundColor = [UIColor whiteColor];
+    lightBtn.alpha = 0.3;
+    lightBtn.layer.cornerRadius = 25;
+    lightBtn.layer.masksToBounds = YES;
+    
+    [lightBtn setImage:[UIImage imageNamed:@"flashg"] forState:UIControlStateNormal];
     [self addSubview:lightBtn];
     
     [lightBtn mas_makeConstraints:^(MASConstraintMaker *make){

@@ -99,7 +99,7 @@
             }
         }
         
-        [sender setBackgroundColor:[UIColor blueColor]];
+        [sender setImage:[UIImage imageNamed:@"flashk"] forState:UIControlStateNormal];
         
     }else{//关闭闪光灯
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -109,7 +109,7 @@
             [device unlockForConfiguration];
         }
         
-        [sender setBackgroundColor:[UIColor redColor]];
+        [sender setImage:[UIImage imageNamed:@"flashg"] forState:UIControlStateNormal];
     }
     
 }
