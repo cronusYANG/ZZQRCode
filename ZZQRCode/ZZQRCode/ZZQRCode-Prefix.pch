@@ -15,12 +15,10 @@
 
 
 #import "Masonry.h"
-#import "MJRefresh.h"
 #import "SVProgressHUD.h"
 
 #import "UILabel+Copy.h"
 #import "UIButton+Block.h"
 #import "UIColor+Addition.h"
-#import <TTTAttributedLabel.h>
 
 #endif /* ZZQRCode_Prefix_pch */

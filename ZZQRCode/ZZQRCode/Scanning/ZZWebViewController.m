@@ -18,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0 ,0 ,30 ,30)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"safari"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(rightBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = barButton;
+    
     
     self.webView = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -28,6 +34,16 @@
     [self.webView loadRequest:urlRequest];
     
     self.webView.delegate = self;
+}
+
+-(void)rightBarButtonClick:(UIButton *)sender{
+    
+    NSURL *url = [NSURL URLWithString:self.url];
+
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+        
+    }];
+
 }
 
 
