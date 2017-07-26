@@ -11,6 +11,8 @@
 @interface ZZMaskView : UIView
 
 @property (strong,nonatomic) UIButton *lightBtn;
+@property (strong,nonatomic) UIButton *imgBtn;
+@property (strong,nonatomic) UIButton *createBtn;
 
 + (instancetype)maskView;
 - (void)repetitionAnimation;

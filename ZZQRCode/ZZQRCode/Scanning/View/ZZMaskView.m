@@ -57,7 +57,40 @@
         make.height.width.offset(50);
     }];
     
+    
+    UIButton *imgBtn = [[UIButton alloc] init];
+    imgBtn.backgroundColor = [UIColor whiteColor];
+    imgBtn.alpha = 0.3;
+    imgBtn.layer.cornerRadius = 25;
+    imgBtn.layer.masksToBounds = YES;
+    [imgBtn setImage:[UIImage imageNamed:@"img"] forState:UIControlStateNormal];
+    [self addSubview:imgBtn];
+
+    [imgBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.offset(44);
+        make.bottom.offset(-50);
+        make.height.width.offset(50);
+    }];
+    
+    
+    UIButton *createBtn = [[UIButton alloc] init];
+    createBtn.backgroundColor = [UIColor whiteColor];
+    createBtn.alpha = 0.3;
+    createBtn.layer.cornerRadius = 25;
+    createBtn.layer.masksToBounds = YES;
+    [createBtn setImage:[UIImage imageNamed:@"QRcode"] forState:UIControlStateNormal];
+    [self addSubview:createBtn];
+    
+    [createBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.offset(-44);
+        make.bottom.offset(-50);
+        make.height.width.offset(50);
+    }];
+
+    
     self.lightBtn = lightBtn;
+    self.imgBtn = imgBtn;
+    self.createBtn = createBtn;
 }
 
 - (void)drawRect:(CGRect)rect

@@ -12,7 +12,7 @@
 #import "ZZTextViewController.h"
 
 
-@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate>
+@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *session;
 
@@ -76,6 +76,8 @@
     
     [_maskView.lightBtn addTarget:self action:@selector(openLight:) forControlEvents:UIControlEventTouchDown];
     
+    [_maskView.imgBtn addTarget:self action:@selector(openPhoto:) forControlEvents:UIControlEventTouchDown];
+    
     _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     _layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
@@ -112,6 +114,52 @@
         [sender setImage:[UIImage imageNamed:@"flashg"] forState:UIControlStateNormal];
     }
     
+}
+
+-(void)openPhoto:(UIButton *)sender{
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        controller.delegate = self;
+        
+        [self presentViewController:controller animated:YES completion:NULL];
+    }
+    else
+    {
+        [self showAlertWithTitle:@"提示" message:@"设备不支持访问相册" handler:nil];
+    }
+    
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = info[UIImagePickerControllerOriginalImage];
+        
+        CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
+                                                  context:nil
+                                                  options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+        
+        NSArray *features = [detector featuresInImage:[CIImage imageWithCGImage:image.CGImage]];
+        if (features.count >= 1)
+        {
+            CIQRCodeFeature *feature = [features firstObject];
+            
+            ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
+            
+            tVC.contentStr = [NSString stringWithFormat:@"%@",feature];
+            
+            [self.navigationController pushViewController:tVC animated:YES];
+        }
+        else
+        {
+            [self showAlertWithTitle:@"提示" message:@"没有发现二维码" handler:nil];
+        }
+
+    }];
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -177,6 +225,17 @@
     }
     
     return _session;
+}
+
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message handler:(void (^) (UIAlertAction *action))handler;
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:handler];
+    
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
