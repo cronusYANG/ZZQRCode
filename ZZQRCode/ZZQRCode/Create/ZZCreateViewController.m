@@ -51,12 +51,14 @@
     
 }
 
+//保存二维码到相册
 - (IBAction)saveBtnClick:(id)sender {
     
     UIImageWriteToSavedPhotosAlbum(self.imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
     
 }
 
+//保存回调
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     NSLog(@"image = %@, error = %@, contextInfo = %@", image, error, contextInfo);
@@ -78,13 +80,13 @@
     
 }
 
-
+#pragma mark - 绘制二维码
 - (UIImage *)createQRImageWithString:(NSString *)string size:(CGSize)size{
     
     NSData *stringData = [string dataUsingEncoding:NSUTF8StringEncoding];
     
     CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    //    NSLog(@"%@",qrFilter.inputKeys);
+    
     [qrFilter setValue:stringData forKey:@"inputMessage"];
     [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
     
@@ -105,7 +107,7 @@
     return codeImage;
 }
 
-/** 为二维码改变颜色 */
+#pragma mark - 改变颜色
 - (UIImage *)changeColorForQRImage:(UIImage *)image backColor:(UIColor *)backColor frontColor:(UIColor *)frontColor
 {
     CIFilter *colorFilter = [CIFilter filterWithName:@"CIFalseColor"
