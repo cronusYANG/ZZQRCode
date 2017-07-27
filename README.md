@@ -7,4 +7,5 @@ A simple qr code scanning.Contains the phone photo identification,Automatic iden
 
 
 
+![](http://www.cronusyang.com/wp-content/uploads/2017/07/IMG_0960-1.png)
 
