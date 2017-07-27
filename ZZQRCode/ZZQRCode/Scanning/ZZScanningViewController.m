@@ -149,22 +149,20 @@
         {
             CIQRCodeFeature *feature = [features firstObject];
             
-            NSString *str = [NSString stringWithFormat:@"%@",feature];
-            
-            BOOL isURL = [self getUrlLink:str];
+            BOOL isURL = [self getUrlLink:feature.messageString];
             
             if (isURL) {
                 
                 ZZWebViewController *webVC = [[ZZWebViewController alloc] init];
                 
-                webVC.url = str;
+                webVC.url = feature.messageString;
                 
                 [self.navigationController pushViewController:webVC animated:YES];
                 
             }else{
                 ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
                 
-                tVC.contentStr = str;
+                tVC.contentStr = feature.messageString;
                 
                 [self.navigationController pushViewController:tVC animated:YES];
             }
@@ -188,8 +186,6 @@
         
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];
         
-//        NSString *str = [NSString stringWithFormat:@"%@",metadataObject];
-        
         BOOL isURL = [self getUrlLink:metadataObject.stringValue];
         
         if (isURL) {
@@ -208,7 +204,6 @@
             
             [self.navigationController pushViewController:tVC animated:YES];
         }
-        
         
      
     }
@@ -263,7 +258,7 @@
 
 - (BOOL)getUrlLink:(NSString *)link {
     
-    NSString *regTags = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSString *regTags = @"((http[s]{0,1}|ftp|HTTP[S]|FTP)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regTags];
     
