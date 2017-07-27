@@ -31,6 +31,8 @@
     
     self.saveBtn.hidden = YES;
     self.changeColorBtn.hidden = YES;
+    
+    [self.textView becomeFirstResponder];
 }
 
 - (IBAction)createBtnClick:(id)sender {
