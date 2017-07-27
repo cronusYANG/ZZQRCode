@@ -11,6 +11,7 @@
 #import "ZZMaskView.h"
 #import "ZZTextViewController.h"
 #import "ZZWebViewController.h"
+#import "ZZCreateViewController.h"
 
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -70,12 +71,21 @@
     
     [_maskView.imgBtn addTarget:self action:@selector(openPhoto:) forControlEvents:UIControlEventTouchDown];
     
+    [_maskView.createBtn addTarget:self action:@selector(createQR:) forControlEvents:UIControlEventTouchDown];
+    
     _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     _layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
     _layer.frame = self.view.layer.bounds;
     [self.view.layer insertSublayer:_layer atIndex:0];
 
+}
+
+-(void)createQR:(UIButton *)sender{
+    
+    ZZCreateViewController *vc = [[ZZCreateViewController alloc] init];
+    [self .navigationController pushViewController:vc animated:YES];
+    
 }
 
 #pragma mark - 闪光灯开关

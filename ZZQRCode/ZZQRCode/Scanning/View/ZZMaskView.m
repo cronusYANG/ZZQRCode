@@ -42,22 +42,17 @@
     [self.layer addSublayer:self.lineLayer];
     [self repetitionAnimation];
     
+    CGFloat bottom = -30;
+    
     UIButton *lightBtn = [[UIButton alloc] init];
     lightBtn.backgroundColor = [UIColor whiteColor];
     lightBtn.alpha = 0.3;
     lightBtn.layer.cornerRadius = 25;
     lightBtn.layer.masksToBounds = YES;
-    
     [lightBtn setImage:[UIImage imageNamed:@"flashg"] forState:UIControlStateNormal];
     [self addSubview:lightBtn];
     
-    [lightBtn mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.equalTo(self.mas_centerX).offset(0);
-        make.bottom.offset(-50);
-        make.height.width.offset(50);
-    }];
-    
-    
+
     UIButton *imgBtn = [[UIButton alloc] init];
     imgBtn.backgroundColor = [UIColor whiteColor];
     imgBtn.alpha = 0.3;
@@ -65,12 +60,6 @@
     imgBtn.layer.masksToBounds = YES;
     [imgBtn setImage:[UIImage imageNamed:@"img"] forState:UIControlStateNormal];
     [self addSubview:imgBtn];
-
-    [imgBtn mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.offset(44);
-        make.bottom.offset(-50);
-        make.height.width.offset(50);
-    }];
     
     
     UIButton *createBtn = [[UIButton alloc] init];
@@ -81,9 +70,21 @@
     [createBtn setImage:[UIImage imageNamed:@"QRcode"] forState:UIControlStateNormal];
     [self addSubview:createBtn];
     
+    [imgBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.offset(44);
+        make.bottom.offset(bottom);
+        make.height.width.offset(50);
+    }];
+    
+    [lightBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        make.centerX.equalTo(self.mas_centerX).offset(0);
+        make.bottom.offset(bottom);
+        make.height.width.offset(50);
+    }];
+    
     [createBtn mas_makeConstraints:^(MASConstraintMaker *make){
         make.right.offset(-44);
-        make.bottom.offset(-50);
+        make.bottom.offset(bottom);
         make.height.width.offset(50);
     }];
 

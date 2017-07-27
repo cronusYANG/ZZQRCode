@@ -16,7 +16,6 @@
 
 #import "Masonry.h"
 #import "SVProgressHUD.h"
-
 #import "UILabel+Copy.h"
 #import "UIButton+Block.h"
 #import "UIColor+Addition.h"

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		559AB56F1F2895C200F157E1 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AB56E1F2895C200F157E1 /* ZZWebViewController.m */; };
+		559AB5731F29934A00F157E1 /* ZZCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */; };
 		55A5F1881EE688CF00C39509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1871EE688CF00C39509 /* main.m */; };
 		55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F18A1EE688CF00C39509 /* AppDelegate.m */; };
 		55A5F1931EE688CF00C39509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F1921EE688CF00C39509 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZZQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		559AB56D1F2895C200F157E1 /* ZZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
 		559AB56E1F2895C200F157E1 /* ZZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
+		559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZCreateViewController.xib; sourceTree = "<group>"; };
 		55A5F1831EE688CF00C39509 /* ZZQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1871EE688CF00C39509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55A5F1891EE688CF00C39509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				55A5F1C21EE68AF300C39509 /* ZZCreateViewController.h */,
 				55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */,
+				559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				55A5F1961EE688CF00C39509 /* LaunchScreen.storyboard in Resources */,
 				55A5F1931EE688CF00C39509 /* Assets.xcassets in Resources */,
+				559AB5731F29934A00F157E1 /* ZZCreateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
