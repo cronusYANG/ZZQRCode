@@ -36,6 +36,7 @@
     self.webView.delegate = self;
 }
 
+//safari打开
 -(void)rightBarButtonClick:(UIButton *)sender{
     
     NSURL *url = [NSURL URLWithString:self.url];
@@ -53,12 +54,12 @@
     
 }
 
-
+//获取网站标题
 - (NSString *)getTitle {
     NSString *str = [[NSString alloc]initWithFormat:@"document.title"];
     NSString *returnstr = [self.webView stringByEvaluatingJavaScriptFromString:str];
     if ([returnstr isEqualToString: @""]) {
-        return @"详情";
+        return @" ";
     }
     return returnstr;
 }

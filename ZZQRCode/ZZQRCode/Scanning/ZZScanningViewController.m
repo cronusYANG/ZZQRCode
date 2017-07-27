@@ -57,15 +57,6 @@
     
 }
 
-#pragma mark 设置焦距
-- (void)setFocalLength:(CGFloat)lengthScale
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        [_layer setAffineTransform:CGAffineTransformMakeScale(lengthScale, lengthScale)];
-        _connection.videoScaleAndCropFactor = lengthScale;
-    }];
-}
-
 
 -(void)setupUI{
     
@@ -87,6 +78,7 @@
 
 }
 
+#pragma mark - 闪光灯开关
 -(void)openLight:(UIButton *)sender{
     
     sender.selected = !sender.selected;
@@ -117,6 +109,7 @@
     
 }
 
+#pragma mark - 打开相册
 -(void)openPhoto:(UIButton *)sender{
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
@@ -137,6 +130,8 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    
+    __weak __typeof(self) weakSelf = self;
     [picker dismissViewControllerAnimated:YES completion:^{
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
@@ -149,7 +144,7 @@
         {
             CIQRCodeFeature *feature = [features firstObject];
             
-            BOOL isURL = [self getUrlLink:feature.messageString];
+            BOOL isURL = [weakSelf getUrlLink:feature.messageString];
             
             if (isURL) {
                 
@@ -157,21 +152,21 @@
                 
                 webVC.url = feature.messageString;
                 
-                [self.navigationController pushViewController:webVC animated:YES];
+                [weakSelf.navigationController pushViewController:webVC animated:YES];
                 
             }else{
                 ZZTextViewController *tVC = [[ZZTextViewController alloc] init];
                 
                 tVC.contentStr = feature.messageString;
                 
-                [self.navigationController pushViewController:tVC animated:YES];
+                [weakSelf.navigationController pushViewController:tVC animated:YES];
             }
             
             
         }
         else
         {
-            [self showAlertWithTitle:@"提示" message:@"没有发现二维码" handler:nil];
+            [weakSelf showAlertWithTitle:@"提示" message:@"没有发现二维码" handler:nil];
         }
 
     }];
@@ -256,9 +251,11 @@
     return _session;
 }
 
+
+#pragma mark - 正则比配URL
 - (BOOL)getUrlLink:(NSString *)link {
     
-    NSString *regTags = @"((http[s]{0,1}|ftp|HTTP[S]|FTP)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSString *regTags = @"((http[s]{0,1}|ftp|HTTP[S]|FTP)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regTags];
     
@@ -268,6 +265,7 @@
 }
 
 
+#pragma mark - 提示框
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message handler:(void (^) (UIAlertAction *action))handler;
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
