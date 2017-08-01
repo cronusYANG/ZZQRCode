@@ -13,6 +13,7 @@
 #import "ZZWebViewController.h"
 #import "ZZCreateViewController.h"
 #import "ZZOptionsView.h"
+#import "ZZCacheViewController.h"
 
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,imgButtonDelegete,lightButtonDelegete,createButtonDelegete,fileButtonDelegete>
@@ -98,7 +99,9 @@
     }
     else
     {
-        [self showAlertWithTitle:@"提示" message:@"设备不支持访问相册" handler:nil];
+        [SVProgressHUD showErrorWithStatus:@"设备不支持访问相册"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
     }
     
 }
@@ -142,6 +145,8 @@
 //文件按钮
 -(void)fileButtonBeTouched:(id)sender{
     NSLog(@"文件");
+    ZZCacheViewController *vc = [[ZZCacheViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

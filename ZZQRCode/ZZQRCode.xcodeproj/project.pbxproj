@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5527E3D11F304BA500BB784A /* ZZOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3D01F304BA500BB784A /* ZZOptionsView.m */; };
-		559AB56F1F2895C200F157E1 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AB56E1F2895C200F157E1 /* ZZWebViewController.m */; };
+		5527E3DF1F30736200BB784A /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3D61F30736200BB784A /* ZZMaskView.m */; };
+		5527E3E01F30736200BB784A /* ZZOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3D81F30736200BB784A /* ZZOptionsView.m */; };
+		5527E3E11F30736200BB784A /* ZZScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3DA1F30736200BB784A /* ZZScanningViewController.m */; };
+		5527E3E21F30736200BB784A /* ZZTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3DC1F30736200BB784A /* ZZTextViewController.m */; };
+		5527E3E31F30736200BB784A /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3DE1F30736200BB784A /* ZZWebViewController.m */; };
+		5527E3E61F3073BC00BB784A /* ZZCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3E51F3073BC00BB784A /* ZZCacheViewController.m */; };
+		5527E3EA1F30756F00BB784A /* ZZFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3E91F30756F00BB784A /* ZZFileManager.m */; };
+		5527E3ED1F30766B00BB784A /* ZZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3EC1F30766B00BB784A /* ZZDataManager.m */; };
 		559AB5731F29934A00F157E1 /* ZZCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */; };
 		55A5F1881EE688CF00C39509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1871EE688CF00C39509 /* main.m */; };
 		55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F18A1EE688CF00C39509 /* AppDelegate.m */; };
@@ -16,10 +22,7 @@
 		55A5F1961EE688CF00C39509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */; };
 		55A5F1A11EE688CF00C39509 /* ZZQRCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1A01EE688CF00C39509 /* ZZQRCodeTests.m */; };
 		55A5F1AC1EE688CF00C39509 /* ZZQRCodeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1AB1EE688CF00C39509 /* ZZQRCodeUITests.m */; };
-		55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */; };
 		55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */; };
-		55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1C71EE68B5400C39509 /* ZZMaskView.m */; };
-		55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */; };
 		55A5F1D01EE6B5ED00C39509 /* UILabel+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1CF1EE6B5ED00C39509 /* UILabel+Copy.m */; };
 		55A5F1D51EE79D4200C39509 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1D21EE79D4200C39509 /* UIButton+Block.m */; };
 		55A5F1D61EE79D4200C39509 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1D41EE79D4200C39509 /* UIColor+Addition.m */; };
@@ -45,10 +48,22 @@
 
 /* Begin PBXFileReference section */
 		30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZZQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5527E3CF1F304BA500BB784A /* ZZOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZOptionsView.h; sourceTree = "<group>"; };
-		5527E3D01F304BA500BB784A /* ZZOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZOptionsView.m; sourceTree = "<group>"; };
-		559AB56D1F2895C200F157E1 /* ZZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
-		559AB56E1F2895C200F157E1 /* ZZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
+		5527E3D51F30736200BB784A /* ZZMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMaskView.h; sourceTree = "<group>"; };
+		5527E3D61F30736200BB784A /* ZZMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMaskView.m; sourceTree = "<group>"; };
+		5527E3D71F30736200BB784A /* ZZOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZOptionsView.h; sourceTree = "<group>"; };
+		5527E3D81F30736200BB784A /* ZZOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZOptionsView.m; sourceTree = "<group>"; };
+		5527E3D91F30736200BB784A /* ZZScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZScanningViewController.h; sourceTree = "<group>"; };
+		5527E3DA1F30736200BB784A /* ZZScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZScanningViewController.m; sourceTree = "<group>"; };
+		5527E3DB1F30736200BB784A /* ZZTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTextViewController.h; sourceTree = "<group>"; };
+		5527E3DC1F30736200BB784A /* ZZTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTextViewController.m; sourceTree = "<group>"; };
+		5527E3DD1F30736200BB784A /* ZZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
+		5527E3DE1F30736200BB784A /* ZZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
+		5527E3E41F3073BC00BB784A /* ZZCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCacheViewController.h; sourceTree = "<group>"; };
+		5527E3E51F3073BC00BB784A /* ZZCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCacheViewController.m; sourceTree = "<group>"; };
+		5527E3E81F30756F00BB784A /* ZZFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFileManager.h; sourceTree = "<group>"; };
+		5527E3E91F30756F00BB784A /* ZZFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFileManager.m; sourceTree = "<group>"; };
+		5527E3EB1F30766B00BB784A /* ZZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDataManager.h; sourceTree = "<group>"; };
+		5527E3EC1F30766B00BB784A /* ZZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDataManager.m; sourceTree = "<group>"; };
 		559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZCreateViewController.xib; sourceTree = "<group>"; };
 		55A5F1831EE688CF00C39509 /* ZZQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1871EE688CF00C39509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,14 +78,8 @@
 		55A5F1A71EE688CF00C39509 /* ZZQRCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZZQRCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5F1AB1EE688CF00C39509 /* ZZQRCodeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZQRCodeUITests.m; sourceTree = "<group>"; };
 		55A5F1AD1EE688CF00C39509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55A5F1BC1EE68A2E00C39509 /* ZZScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZScanningViewController.h; sourceTree = "<group>"; };
-		55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZScanningViewController.m; sourceTree = "<group>"; };
 		55A5F1C21EE68AF300C39509 /* ZZCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCreateViewController.h; sourceTree = "<group>"; };
 		55A5F1C31EE68AF300C39509 /* ZZCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCreateViewController.m; sourceTree = "<group>"; };
-		55A5F1C61EE68B5400C39509 /* ZZMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZMaskView.h; sourceTree = "<group>"; };
-		55A5F1C71EE68B5400C39509 /* ZZMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZMaskView.m; sourceTree = "<group>"; };
-		55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTextViewController.h; sourceTree = "<group>"; };
-		55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTextViewController.m; sourceTree = "<group>"; };
 		55A5F1CC1EE6B01900C39509 /* ZZQRCode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZZQRCode-Prefix.pch"; sourceTree = "<group>"; };
 		55A5F1CE1EE6B5ED00C39509 /* UILabel+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Copy.h"; sourceTree = "<group>"; };
 		55A5F1CF1EE6B5ED00C39509 /* UILabel+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Copy.m"; sourceTree = "<group>"; };
@@ -117,6 +126,51 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5527E3D21F30732B00BB784A /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				5527E3E41F3073BC00BB784A /* ZZCacheViewController.h */,
+				5527E3E51F3073BC00BB784A /* ZZCacheViewController.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		5527E3D31F30736200BB784A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5527E3D41F30736200BB784A /* View */,
+				5527E3D91F30736200BB784A /* ZZScanningViewController.h */,
+				5527E3DA1F30736200BB784A /* ZZScanningViewController.m */,
+				5527E3DB1F30736200BB784A /* ZZTextViewController.h */,
+				5527E3DC1F30736200BB784A /* ZZTextViewController.m */,
+				5527E3DD1F30736200BB784A /* ZZWebViewController.h */,
+				5527E3DE1F30736200BB784A /* ZZWebViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5527E3D41F30736200BB784A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5527E3D51F30736200BB784A /* ZZMaskView.h */,
+				5527E3D61F30736200BB784A /* ZZMaskView.m */,
+				5527E3D71F30736200BB784A /* ZZOptionsView.h */,
+				5527E3D81F30736200BB784A /* ZZOptionsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5527E3E71F30753400BB784A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5527E3E81F30756F00BB784A /* ZZFileManager.h */,
+				5527E3E91F30756F00BB784A /* ZZFileManager.m */,
+				5527E3EB1F30766B00BB784A /* ZZDataManager.h */,
+				5527E3EC1F30766B00BB784A /* ZZDataManager.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		55A5F17A1EE688CF00C39509 = {
 			isa = PBXGroup;
 			children = (
@@ -148,8 +202,10 @@
 				55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */,
 				55A5F1971EE688CF00C39509 /* Info.plist */,
 				55A5F1B91EE689F100C39509 /* Create */,
-				55A5F1BB1EE689F100C39509 /* Scanning */,
+				5527E3D21F30732B00BB784A /* Cache */,
+				5527E3D31F30736200BB784A /* Main */,
 				55A5F1CD1EE6B5ED00C39509 /* Category */,
+				5527E3E71F30753400BB784A /* Utils */,
 				55A5F1861EE688CF00C39509 /* Supporting Files */,
 			);
 			path = ZZQRCode;
@@ -190,31 +246,6 @@
 				559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */,
 			);
 			path = Create;
-			sourceTree = "<group>";
-		};
-		55A5F1BB1EE689F100C39509 /* Scanning */ = {
-			isa = PBXGroup;
-			children = (
-				55A5F1C51EE68B1400C39509 /* View */,
-				55A5F1BC1EE68A2E00C39509 /* ZZScanningViewController.h */,
-				55A5F1BD1EE68A2E00C39509 /* ZZScanningViewController.m */,
-				55A5F1C91EE69BE400C39509 /* ZZTextViewController.h */,
-				55A5F1CA1EE69BE400C39509 /* ZZTextViewController.m */,
-				559AB56D1F2895C200F157E1 /* ZZWebViewController.h */,
-				559AB56E1F2895C200F157E1 /* ZZWebViewController.m */,
-			);
-			path = Scanning;
-			sourceTree = "<group>";
-		};
-		55A5F1C51EE68B1400C39509 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				55A5F1C61EE68B5400C39509 /* ZZMaskView.h */,
-				55A5F1C71EE68B5400C39509 /* ZZMaskView.m */,
-				5527E3CF1F304BA500BB784A /* ZZOptionsView.h */,
-				5527E3D01F304BA500BB784A /* ZZOptionsView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		55A5F1CD1EE6B5ED00C39509 /* Category */ = {
@@ -426,17 +457,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5527E3D11F304BA500BB784A /* ZZOptionsView.m in Sources */,
+				5527E3EA1F30756F00BB784A /* ZZFileManager.m in Sources */,
 				55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */,
-				55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */,
-				55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */,
+				5527E3E11F30736200BB784A /* ZZScanningViewController.m in Sources */,
 				55A5F1881EE688CF00C39509 /* main.m in Sources */,
 				55A5F1D01EE6B5ED00C39509 /* UILabel+Copy.m in Sources */,
 				55A5F1D51EE79D4200C39509 /* UIButton+Block.m in Sources */,
-				55A5F1C81EE68B5400C39509 /* ZZMaskView.m in Sources */,
-				559AB56F1F2895C200F157E1 /* ZZWebViewController.m in Sources */,
+				5527E3E61F3073BC00BB784A /* ZZCacheViewController.m in Sources */,
 				55A5F1C41EE68AF300C39509 /* ZZCreateViewController.m in Sources */,
+				5527E3E01F30736200BB784A /* ZZOptionsView.m in Sources */,
+				5527E3E21F30736200BB784A /* ZZTextViewController.m in Sources */,
+				5527E3E31F30736200BB784A /* ZZWebViewController.m in Sources */,
 				55A5F1D61EE79D4200C39509 /* UIColor+Addition.m in Sources */,
+				5527E3DF1F30736200BB784A /* ZZMaskView.m in Sources */,
+				5527E3ED1F30766B00BB784A /* ZZDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

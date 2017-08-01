@@ -47,7 +47,9 @@
     }
     else
     {
-        [self showAlertWithTitle:@"提示" message:@"请先输入文字" handler:nil];
+        [SVProgressHUD showErrorWithStatus:@"请先输入文字"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
     }
 
     
@@ -67,8 +69,10 @@
     
     if (error) {
         [SVProgressHUD showErrorWithStatus:@"保存失败"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     }else{
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     }
     
     
@@ -76,9 +80,9 @@
 
 - (IBAction)changeColorClick:(id)sender {
     
-    UIImage *image = [self createQRImageWithString:self.textView.text size:qrImageSize];
+    self.imgView.image = [self createQRImageWithString:self.textView.text size:qrImageSize];
     
-    self.imgView.image = [self changeColorForQRImage:image backColor:kRandomColor frontColor:kRandomColor];
+    self.imgView.image = [self changeColorForQRImage:self.imgView.image backColor:kRandomColor frontColor:kRandomColor];
     
 }
 
@@ -92,7 +96,16 @@
     [qrFilter setValue:stringData forKey:@"inputMessage"];
     [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
     
-    CIImage *qrImage = qrFilter.outputImage;
+ 
+    UIImage *codeImage = [self createQRImageWithFilter:qrFilter size:size];
+  
+    
+    return codeImage;
+}
+
+- (UIImage *)createQRImageWithFilter:(CIFilter *)filter size:(CGSize)size{
+    
+    CIImage *qrImage = filter.outputImage;
     //放大并绘制二维码 (上面生成的二维码很小，需要放大)
     CGImageRef cgImage = [[CIContext contextWithOptions:nil] createCGImage:qrImage fromRect:qrImage.extent];
     UIGraphicsBeginImageContext(size);
@@ -107,6 +120,7 @@
     CGImageRelease(cgImage);
     
     return codeImage;
+
 }
 
 #pragma mark - 改变颜色
@@ -119,18 +133,11 @@
                              @"inputColor1",[CIColor colorWithCGColor:backColor.CGColor],
                              nil];
     
-    return [UIImage imageWithCIImage:colorFilter.outputImage];
-}
 
-#pragma mark - 提示框
-- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message handler:(void (^) (UIAlertAction *action))handler;
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIImage *codeImage =  [self createQRImageWithFilter:colorFilter size:qrImageSize];
+
     
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:handler];
-    
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil];
+    return codeImage;
 }
 
 - (void)didReceiveMemoryWarning {
