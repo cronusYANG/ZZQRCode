@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5527E3D11F304BA500BB784A /* ZZOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527E3D01F304BA500BB784A /* ZZOptionsView.m */; };
 		559AB56F1F2895C200F157E1 /* ZZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559AB56E1F2895C200F157E1 /* ZZWebViewController.m */; };
 		559AB5731F29934A00F157E1 /* ZZCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */; };
 		55A5F1881EE688CF00C39509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A5F1871EE688CF00C39509 /* main.m */; };
@@ -44,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		30EDA28A2DB991E9F922E0C3 /* libPods-ZZQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZZQRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5527E3CF1F304BA500BB784A /* ZZOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZOptionsView.h; sourceTree = "<group>"; };
+		5527E3D01F304BA500BB784A /* ZZOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZOptionsView.m; sourceTree = "<group>"; };
 		559AB56D1F2895C200F157E1 /* ZZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWebViewController.h; sourceTree = "<group>"; };
 		559AB56E1F2895C200F157E1 /* ZZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWebViewController.m; sourceTree = "<group>"; };
 		559AB5721F29934A00F157E1 /* ZZCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZCreateViewController.xib; sourceTree = "<group>"; };
@@ -139,14 +142,14 @@
 		55A5F1851EE688CF00C39509 /* ZZQRCode */ = {
 			isa = PBXGroup;
 			children = (
-				55A5F1B91EE689F100C39509 /* Create */,
-				55A5F1BB1EE689F100C39509 /* Scanning */,
 				55A5F1891EE688CF00C39509 /* AppDelegate.h */,
 				55A5F18A1EE688CF00C39509 /* AppDelegate.m */,
-				55A5F1CD1EE6B5ED00C39509 /* Category */,
 				55A5F1921EE688CF00C39509 /* Assets.xcassets */,
 				55A5F1941EE688CF00C39509 /* LaunchScreen.storyboard */,
 				55A5F1971EE688CF00C39509 /* Info.plist */,
+				55A5F1B91EE689F100C39509 /* Create */,
+				55A5F1BB1EE689F100C39509 /* Scanning */,
+				55A5F1CD1EE6B5ED00C39509 /* Category */,
 				55A5F1861EE688CF00C39509 /* Supporting Files */,
 			);
 			path = ZZQRCode;
@@ -208,6 +211,8 @@
 			children = (
 				55A5F1C61EE68B5400C39509 /* ZZMaskView.h */,
 				55A5F1C71EE68B5400C39509 /* ZZMaskView.m */,
+				5527E3CF1F304BA500BB784A /* ZZOptionsView.h */,
+				5527E3D01F304BA500BB784A /* ZZOptionsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,7 +309,7 @@
 				TargetAttributes = {
 					55A5F1821EE688CF00C39509 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = XBD2EDB9AY;
+						DevelopmentTeam = DR73UB2U9G;
 						ProvisioningStyle = Automatic;
 					};
 					55A5F19B1EE688CF00C39509 = {
@@ -421,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5527E3D11F304BA500BB784A /* ZZOptionsView.m in Sources */,
 				55A5F18B1EE688CF00C39509 /* AppDelegate.m in Sources */,
 				55A5F1CB1EE69BE400C39509 /* ZZTextViewController.m in Sources */,
 				55A5F1BE1EE68A2E00C39509 /* ZZScanningViewController.m in Sources */,
@@ -576,7 +582,7 @@
 			baseConfigurationReference = 93B94B3863A10AFF7A24E749 /* Pods-ZZQRCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBD2EDB9AY;
+				DEVELOPMENT_TEAM = DR73UB2U9G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				INFOPLIST_FILE = ZZQRCode/Info.plist;
@@ -592,7 +598,7 @@
 			baseConfigurationReference = C8C76D64388899F45605B8B6 /* Pods-ZZQRCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBD2EDB9AY;
+				DEVELOPMENT_TEAM = DR73UB2U9G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZZQRCode/ZZQRCode-Prefix.pch";
 				INFOPLIST_FILE = ZZQRCode/Info.plist;

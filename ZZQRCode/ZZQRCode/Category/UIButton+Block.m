@@ -1,10 +1,4 @@
-//
-//  UIButton+Block.m
-//  ButtonBlock
-//
-//  Created by luciuslu on 13-11-25.
-//
-//
+
 
 #import "UIButton+Block.h"
 #import <objc/runtime.h>

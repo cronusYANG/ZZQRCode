@@ -1,10 +1,4 @@
-//
-//  UIColor+Addition.m
-//  watermelon
-//
-//  Created by user on 2016/11/8.
-//  Copyright © 2016年 xiongshuo. All rights reserved.
-//
+
 
 #import "UIColor+Addition.h"
 

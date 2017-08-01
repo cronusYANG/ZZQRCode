@@ -12,9 +12,10 @@
 #import "ZZTextViewController.h"
 #import "ZZWebViewController.h"
 #import "ZZCreateViewController.h"
+#import "ZZOptionsView.h"
 
 
-@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,imgButtonDelegete,lightButtonDelegete,createButtonDelegete,fileButtonDelegete>
 
 @property (nonatomic, strong) AVCaptureSession *session;
 
@@ -67,30 +68,43 @@
     
     [self.view addSubview:_maskView];
     
-    [_maskView.lightBtn addTarget:self action:@selector(openLight:) forControlEvents:UIControlEventTouchDown];
-    
-    [_maskView.imgBtn addTarget:self action:@selector(openPhoto:) forControlEvents:UIControlEventTouchDown];
-    
-    [_maskView.createBtn addTarget:self action:@selector(createQR:) forControlEvents:UIControlEventTouchDown];
-    
     _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     _layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
     _layer.frame = self.view.layer.bounds;
     [self.view.layer insertSublayer:_layer atIndex:0];
+    
+    ZZOptionsView *optionView = [ZZOptionsView optionsView];
+    optionView.frame = CGRectMake(0, HEIGHT/1.15, WIDTH, 50);
+    optionView.backgroundColor = [UIColor clearColor];
+    optionView.imgDelegate = self;
+    optionView.lightDelegate = self;
+    optionView.createDelegate = self;
+    optionView.fileDelegate = self;
+    [self.view addSubview:optionView];
 
 }
 
--(void)createQR:(UIButton *)sender{
-    
-    ZZCreateViewController *vc = [[ZZCreateViewController alloc] init];
-    [self .navigationController pushViewController:vc animated:YES];
+//相册按钮
+-(void)imgButtonBeTouched:(id)sender{
+    NSLog(@"相册");
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        controller.delegate = self;
+        
+        [self presentViewController:controller animated:YES completion:NULL];
+    }
+    else
+    {
+        [self showAlertWithTitle:@"提示" message:@"设备不支持访问相册" handler:nil];
+    }
     
 }
-
-#pragma mark - 闪光灯开关
--(void)openLight:(UIButton *)sender{
-    
+//闪光灯按钮
+-(void)lightButtonBeTouched:(UIButton *)sender{
+    NSLog(@"闪光灯");
     sender.selected = !sender.selected;
     if (sender.isSelected == YES) { //打开闪光灯
         AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -116,26 +130,20 @@
         
         [sender setImage:[UIImage imageNamed:@"flashg"] forState:UIControlStateNormal];
     }
+
+}
+//生成按钮
+-(void)createButtonBeTouched:(id)sender{
+    NSLog(@"生成");
+    ZZCreateViewController *vc = [[ZZCreateViewController alloc] init];
+    [self .navigationController pushViewController:vc animated:YES];
     
+}
+//文件按钮
+-(void)fileButtonBeTouched:(id)sender{
+    NSLog(@"文件");
 }
 
-#pragma mark - 打开相册
--(void)openPhoto:(UIButton *)sender{
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-    {
-        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        controller.delegate = self;
-        
-        [self presentViewController:controller animated:YES completion:NULL];
-    }
-    else
-    {
-        [self showAlertWithTitle:@"提示" message:@"设备不支持访问相册" handler:nil];
-    }
-    
-}
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

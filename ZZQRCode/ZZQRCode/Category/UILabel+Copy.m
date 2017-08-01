@@ -1,10 +1,4 @@
-//
-//  UILabel+Copy.m
-//  XQ_RPG
-//
-//  Created by POPLAR on 2017/3/16.
-//  Copyright © 2017年 user. All rights reserved.
-//
+
 
 #import "UILabel+Copy.h"
 
