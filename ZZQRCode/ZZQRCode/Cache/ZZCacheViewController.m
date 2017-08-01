@@ -18,6 +18,11 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"存档";
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupTableView];
 }
 
 -(void)setupTableView{
