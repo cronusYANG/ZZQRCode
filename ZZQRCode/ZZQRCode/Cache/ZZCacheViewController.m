@@ -37,9 +37,23 @@ static NSString *cellID = @"cellID";
     
     [self setupTableView];
     
-//    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:_cacheArray forKey:@"title"];
-//    
-//    NSLog(@"%@",dic);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空所有" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAll)];
+}
+
+-(void)deleteAll{
+    
+    [self showAlertWithTitle:@"提示" message:@"确定清楚所有?" yesHandler:^(UIAlertAction *action) {
+        
+        [ZZDataManager removeDataWithPath:CACHENAME];
+        
+        [self.cacheArray removeAllObjects];
+        
+        [self.tableView reloadData];
+
+        
+    } noHandler:nil];
+    
+    
 }
 
 -(void)setupTableView{
@@ -148,6 +162,19 @@ static NSString *cellID = @"cellID";
     BOOL isValid = [predicate evaluateWithObject:link];
     
     return isValid;
+}
+
+#pragma mark - 提示框
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message yesHandler:(void (^) (UIAlertAction *action))yesHandler noHandler:(void (^) (UIAlertAction *action))noHandler;
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:yesHandler];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:noHandler];
+    
+    [alert addAction:action];
+    [alert addAction:action2];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

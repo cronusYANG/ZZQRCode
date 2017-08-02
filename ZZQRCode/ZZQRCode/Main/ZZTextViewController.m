@@ -19,7 +19,19 @@
     
     [self setupUI];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"一键复制" style:UIBarButtonItemStylePlain target:self action:@selector(copyAllData)];
    
+}
+
+-(void)copyAllData{
+    
+    UIPasteboard *pBoard = [UIPasteboard generalPasteboard];
+    
+    pBoard.string = self.contentStr;
+    
+    [SVProgressHUD showSuccessWithStatus:@"复制成功"];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+    
 }
 
 -(void)setupUI{
