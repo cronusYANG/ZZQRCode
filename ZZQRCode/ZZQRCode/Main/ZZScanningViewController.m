@@ -14,6 +14,7 @@
 #import "ZZCreateViewController.h"
 #import "ZZOptionsView.h"
 #import "ZZCacheViewController.h"
+#import "ZZDataManager.h"
 
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,imgButtonDelegete,lightButtonDelegete,createButtonDelegete,fileButtonDelegete>
@@ -28,9 +29,18 @@
 
 @property (strong,nonatomic) ZZMaskView *maskView;
 
+@property (strong,nonatomic) NSMutableArray *scanningArray;
+
 @end
 
 @implementation ZZScanningViewController
+
+-(NSMutableArray *)scanningArray{
+    if (!_scanningArray) {
+        _scanningArray = [NSMutableArray array];
+    }
+    return _scanningArray;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -55,8 +65,25 @@
     
     [self setupUI];
     
+    [self loadLocalData];
+    
     
     self.view.backgroundColor = [UIColor blueColor];
+    
+}
+
+-(void)loadLocalData{
+    
+    
+    id data = [ZZDataManager loadDataWithPath:CACHENAME];
+    
+    if (data) {
+        
+        NSMutableArray *arr = [NSMutableArray arrayWithArray:data];
+        
+        self.scanningArray = arr;
+        
+    }
     
 }
 
@@ -167,6 +194,11 @@
         {
             CIQRCodeFeature *feature = [features firstObject];
             
+            [self.scanningArray addObject:feature.messageString];
+            
+            
+            [ZZDataManager saveData:self.scanningArray withFileName:CACHENAME];
+            
             BOOL isURL = [weakSelf getUrlLink:feature.messageString];
             
             if (isURL) {
@@ -203,6 +235,10 @@
         [self.session stopRunning];
         
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];
+        
+        [self.scanningArray addObject:metadataObject.stringValue];
+        
+        [ZZDataManager saveData:self.scanningArray withFileName:CACHENAME];
         
         BOOL isURL = [self getUrlLink:metadataObject.stringValue];
         
@@ -273,6 +309,8 @@
     
     return _session;
 }
+
+
 
 
 #pragma mark - 正则比配URL

@@ -28,8 +28,8 @@
 -(void)setupUI{
     NSArray *imgArray = [NSArray array];
     
-//    imgArray = @[@"img",@"flashg",@"QRcode",@"file"];
-    imgArray = @[@"img",@"flashg",@"QRcode"];
+    imgArray = @[@"img",@"flashg",@"QRcode",@"file"];
+//    imgArray = @[@"img",@"flashg",@"QRcode"];
     
     CGFloat wh = 50;
     

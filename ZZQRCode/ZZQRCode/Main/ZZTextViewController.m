@@ -24,30 +24,24 @@
 
 -(void)setupUI{
     
-    UILabel *label = [[UILabel alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [label sizeToFit];
-    
-    label.font = [UIFont systemFontOfSize:20];
-    
-    label.numberOfLines = 0;
-    
-    label.isCopyable = YES;
-    
-    label.textColor = [UIColor blackColor];
-    
-    label.text = self.contentStr;
-    
-    [self.view addSubview:label];
+    UITextView *tv = [[UITextView alloc] init];
+    tv.font = [UIFont systemFontOfSize:20];
+    tv.textColor = [UIColor blackColor];
+    [tv setEditable:NO];
+    tv.text = self.contentStr;
+    [self.view addSubview:tv];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"扫描结果";
     
-    [label mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.offset(4);
-        make.right.offset(-4);
+    [tv mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.offset(0);
+        make.right.offset(0);
         make.top.offset(64);
+        make.bottom.offset(0);
     }];
 }
 
