@@ -77,9 +77,26 @@ static NSString *cellID = @"cellID";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    cell.textLabel.text = self.cacheArray[indexPath.row];
+    NSString *str = self.cacheArray[indexPath.row];
+    
+    BOOL isURL = [self getUrlLink:str];
+    
+    if (isURL) {
+        
+        cell.imageView.image = [UIImage imageNamed:@"web"];
+        
+    }else{
+        
+        cell.imageView.image = [UIImage imageNamed:@"txt"];
+        
+    }
+    
+    cell.textLabel.text = str;
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
