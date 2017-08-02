@@ -8,6 +8,8 @@
 
 #import "ZZCacheViewController.h"
 #import "ZZDataManager.h"
+#import "ZZTextViewController.h"
+#import "ZZWebViewController.h"
 
 static NSString *cellID = @"cellID";
 @interface ZZCacheViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -84,8 +86,19 @@ static NSString *cellID = @"cellID";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    NSString *str = self.cacheArray[indexPath.row];
     
+    BOOL isURL = [self getUrlLink:str];
     
+    if (isURL) {
+        ZZWebViewController *vc = [[ZZWebViewController alloc] init];
+        vc.url = str;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        ZZTextViewController *vc = [[ZZTextViewController alloc] init];
+        vc.contentStr = str;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,6 +119,18 @@ static NSString *cellID = @"cellID";
     [ZZDataManager saveData:_cacheArray withFileName:CACHENAME];
     // 从列表中删除
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - 正则比配URL
+- (BOOL)getUrlLink:(NSString *)link {
+    
+    NSString *regTags = @"((http[s]{0,1}|ftp|HTTP[S]|FTP)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regTags];
+    
+    BOOL isValid = [predicate evaluateWithObject:link];
+    
+    return isValid;
 }
 
 
