@@ -42,7 +42,7 @@ static NSString *cellID = @"cellID";
 
 -(void)deleteAll{
     
-    [self showAlertWithTitle:@"提示" message:@"确定清楚所有?" yesHandler:^(UIAlertAction *action) {
+    [self showAlertWithTitle:@"提示" message:@"确定清除所有?" yesHandler:^(UIAlertAction *action) {
         
         [ZZDataManager removeDataWithPath:CACHENAME];
         
