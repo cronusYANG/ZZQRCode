@@ -85,28 +85,28 @@
     
     if (sender.tag == 100) {
         
-        if ([self.imgDelegate respondsToSelector:@selector(imgButtonBeTouched:)]) {
-            [self.imgDelegate imgButtonBeTouched:self];
+        if ([self.delegete respondsToSelector:@selector(imgButtonBeTouched:)]) {
+            [self.delegete imgButtonBeTouched:self];
         }
         
     }else if (sender.tag == 101){
         
-        if ([self.lightDelegate respondsToSelector:@selector(lightButtonBeTouched:)]) {
-            [self.lightDelegate lightButtonBeTouched:sender];
+        if ([self.delegete respondsToSelector:@selector(lightButtonBeTouched:)]) {
+            [self.delegete lightButtonBeTouched:sender];
         }
         
         
     }else if (sender.tag == 102){
         
-        if ([self.createDelegate respondsToSelector:@selector(createButtonBeTouched:)]) {
-            [self.createDelegate createButtonBeTouched:self];
+        if ([self.delegete respondsToSelector:@selector(createButtonBeTouched:)]) {
+            [self.delegete createButtonBeTouched:self];
         }
         
         
     }else if (sender.tag == 103){
         
-        if ([self.fileDelegate respondsToSelector:@selector(fileButtonBeTouched:)]) {
-            [self.fileDelegate fileButtonBeTouched:self];
+        if ([self.delegete respondsToSelector:@selector(fileButtonBeTouched:)]) {
+            [self.delegete fileButtonBeTouched:self];
         }
         
         

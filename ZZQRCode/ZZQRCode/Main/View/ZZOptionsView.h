@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol imgButtonDelegete <NSObject>
+@protocol optionsButtonClickDelegete <NSObject>
 
 @optional
 
 - (void)imgButtonBeTouched:(id)sender;
+- (void)lightButtonBeTouched:(UIButton *)sender;
+- (void)createButtonBeTouched:(id)sender;
+- (void)fileButtonBeTouched:(id)sender;
 
 @end
 
@@ -20,7 +23,7 @@
 
 @optional
 
-- (void)lightButtonBeTouched:(UIButton *)sender;
+
 
 @end
 
@@ -28,7 +31,7 @@
 
 @optional
 
-- (void)createButtonBeTouched:(id)sender;
+
 
 @end
 
@@ -36,15 +39,13 @@
 
 @optional
 
-- (void)fileButtonBeTouched:(id)sender;
+
 
 @end
 
 
 @interface ZZOptionsView : UIView
 +(instancetype)optionsView;
-@property (nonatomic, weak) id <imgButtonDelegete> imgDelegate;
-@property (nonatomic, weak) id <lightButtonDelegete> lightDelegate;
-@property (nonatomic, weak) id <createButtonDelegete> createDelegate;
-@property (nonatomic, weak) id <fileButtonDelegete> fileDelegate;
+@property (nonatomic, weak) id <optionsButtonClickDelegete> delegete;
+
 @end

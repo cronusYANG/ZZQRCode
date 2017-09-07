@@ -7,6 +7,7 @@
 //
 
 #import "ZZCreateViewController.h"
+#import "ZZQRCodeManager.h"
 
 #define qrImageSize CGSizeMake(300,300)
 
@@ -41,7 +42,7 @@
     
     if (self.textView.text.length > 0)
     {
-        self.imgView.image = [self createQRImageWithString:self.textView.text size:qrImageSize];
+        self.imgView.image = [ZZQRCodeManager createQRImageWithString:self.textView.text size:qrImageSize];
         self.saveBtn.hidden = NO;
         self.changeColorBtn.hidden = NO;
     }
@@ -80,9 +81,9 @@
 
 - (IBAction)changeColorClick:(id)sender {
     
-    self.imgView.image = [self createQRImageWithString:self.textView.text size:qrImageSize];
+    self.imgView.image = [ZZQRCodeManager createQRImageWithString:self.textView.text size:qrImageSize];
     
-    self.imgView.image = [self changeColorForQRImage:self.imgView.image backColor:kRandomColor frontColor:kRandomColor];
+    self.imgView.image = [ZZQRCodeManager changeColorForQRImage:self.imgView.image backColor:kRandomColor frontColor:kRandomColor];
     
 }
 

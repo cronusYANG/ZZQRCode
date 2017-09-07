@@ -15,17 +15,21 @@
 #import "ZZOptionsView.h"
 #import "ZZCacheViewController.h"
 #import "ZZDataManager.h"
+#import <AudioToolbox/AudioToolbox.h>
 
-
-@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,imgButtonDelegete,lightButtonDelegete,createButtonDelegete,fileButtonDelegete>
+@interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,optionsButtonClickDelegete>
 
 @property (nonatomic, strong) AVCaptureSession *session;
 
 @property (strong,nonatomic) AVCaptureVideoPreviewLayer *layer;
 
+@property (strong,nonatomic) AVCaptureDevice *device;
+
 @property (nonatomic, strong) AVCaptureConnection *connection;
 
 @property (nonatomic, assign) BOOL flashOpen;
+
+@property (assign,nonatomic) CGFloat initialPinchZoom;
 
 @property (strong,nonatomic) ZZMaskView *maskView;
 
@@ -94,6 +98,8 @@
     
     _maskView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
     
+    [self setUpGesture];
+    
     [self.view addSubview:_maskView];
     
     _layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
@@ -105,14 +111,96 @@
     ZZOptionsView *optionView = [ZZOptionsView optionsView];
     optionView.frame = CGRectMake(0, HEIGHT/1.15, WIDTH, 50);
     optionView.backgroundColor = [UIColor clearColor];
-    optionView.imgDelegate = self;
-    optionView.lightDelegate = self;
-    optionView.createDelegate = self;
-    optionView.fileDelegate = self;
+    optionView.delegete = self;
     [self.view addSubview:optionView];
 
 }
 
+#pragma mark - 手势变焦
+//添加手势
+- (void)setUpGesture{
+    
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchDetected:)];
+    pinch.delegate = self;
+    [self.maskView addGestureRecognizer:pinch];
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.maskView addGestureRecognizer:doubleTap];
+}
+
+
+
+//双击
+-(void)handleDoubleTap:(UITapGestureRecognizer *)recogniser {
+    
+    if (!_device)
+        return;
+    
+    if (recogniser.state == UIGestureRecognizerStateBegan)
+    {
+        _initialPinchZoom = _device.videoZoomFactor;
+    }
+    
+    NSError *error = nil;
+    [_device lockForConfiguration:&error];
+    
+    if (!error) {
+        CGFloat zoomFactor;
+        
+        if (_device.videoZoomFactor == 1.0f) {
+            zoomFactor = 5.0f;
+        }
+        else{
+            zoomFactor = 1.0f;
+        }
+        
+        _device.videoZoomFactor = zoomFactor;
+        
+        [_device unlockForConfiguration];
+        
+    }
+    
+}
+
+//双指触摸
+- (void)pinchDetected:(UIPinchGestureRecognizer *)recogniser {
+    
+    if (!_device)
+        return;
+    
+    if (recogniser.state == UIGestureRecognizerStateBegan)
+    {
+        _initialPinchZoom = _device.videoZoomFactor;
+    }
+    
+    NSError *error = nil;
+    [_device lockForConfiguration:&error];
+    
+    if (!error) {
+        CGFloat zoomFactor;
+        CGFloat scale = recogniser.scale;
+        if (scale < 1.0f) {
+            zoomFactor = _initialPinchZoom - pow(_device.activeFormat.videoMaxZoomFactor, 1.0f - recogniser.scale);
+            
+        }
+        else{
+            zoomFactor = _initialPinchZoom + pow(_device.activeFormat.videoMaxZoomFactor, (recogniser.scale - 1.0f) / 2.0f);
+        }
+        
+        zoomFactor = MIN(10.0f, zoomFactor);
+        zoomFactor = MAX(1.0f, zoomFactor);
+        
+        _device.videoZoomFactor = zoomFactor;
+        
+        [_device unlockForConfiguration];
+        
+        //        NSLog(@"%f",_device.videoZoomFactor);
+    }
+}
+
+#pragma mark - 按钮
 //相册按钮
 -(void)imgButtonBeTouched:(id)sender{
     NSLog(@"相册");
@@ -230,6 +318,12 @@
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
+    
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//震动提示
+    //提示音
+    SystemSoundID soundIDTest = 1052;
+    AudioServicesPlaySystemSound(soundIDTest);
+    
     if (metadataObjects.count > 0)
     {
         [self.session stopRunning];
@@ -272,6 +366,7 @@
         _session = ({
             //获取摄像设备
             AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+            _device = device;
             
             //创建输入流
             AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
@@ -282,8 +377,11 @@
             
             //创建输出流
             AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc] init];
+            AVCaptureVideoDataOutput *sampleOutput = [[AVCaptureVideoDataOutput alloc] init];
+            
             //设置代理 主线程刷新
             [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+            [sampleOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
             //设置扫描区域
             CGFloat width = 300 / CGRectGetHeight(self.view.frame);
             CGFloat height = 300 / CGRectGetWidth(self.view.frame);
@@ -294,6 +392,7 @@
             [session setSessionPreset:AVCaptureSessionPresetHigh];
             [session addInput:input];
             [session addOutput:output];
+            [session addOutput:sampleOutput];
 
             
             //设置编码 二维&条形
