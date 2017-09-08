@@ -8,7 +8,6 @@
 
 #import "ZZMaskView.h"
 
-
 #define screenW CGRectGetWidth([UIScreen mainScreen].bounds)
 #define screenH CGRectGetHeight([UIScreen mainScreen].bounds)
 
@@ -52,14 +51,6 @@
     
     if (!_allAroundAlpha) {
         _allAroundAlpha = 0.4;
-    }
-    
-    if (!_sideImage) {
-        _sideImage = [UIImage imageNamed:@"img_test_wide"];
-    }
-    
-    if (!_lineImage) {
-        _lineImage = [UIImage imageNamed:@"img_test_wire"];
     }
     
     //扫描区域
@@ -122,6 +113,44 @@
     _rightView = rightView;
 
 }
+
+- (void)drawRect:(CGRect)rect
+{
+    if (!_sideImage) {
+        
+        if (!_scanSize) {
+            _scanSize = screenW * 0.8;
+        }
+        
+        CGFloat width = rect.size.width;
+        CGFloat height = rect.size.height;
+        CGFloat pickingFieldWidth = _scanSize;
+        CGFloat pickingFieldHeight = _scanSize;
+        
+        CGContextRef contextRef = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(contextRef);
+        CGContextSetRGBFillColor(contextRef, 0, 0, 0, 0.35);
+        CGContextSetLineWidth(contextRef, 3);
+        
+        CGRect pickingFieldRect = CGRectMake((width - pickingFieldWidth) / 2, (height - pickingFieldHeight) / 2, pickingFieldWidth, pickingFieldHeight);
+        
+        UIBezierPath *pickingFieldPath = [UIBezierPath bezierPathWithRect:pickingFieldRect];
+        UIBezierPath *bezierPathRect = [UIBezierPath bezierPathWithRect:rect];
+        [bezierPathRect appendPath:pickingFieldPath];
+        
+        bezierPathRect.usesEvenOddFillRule = YES;
+        [bezierPathRect fill];
+        CGContextSetLineWidth(contextRef, 2);
+        CGContextSetRGBStrokeColor(contextRef, 27/255.0, 181/255.0, 254/255.0, 1);
+        [pickingFieldPath stroke];
+        
+        CGContextRestoreGState(contextRef);
+        self.layer.contentsGravity = kCAGravityCenter;
+
+    }
+    
+}
+
 
 -(void)setScanSize:(CGFloat)scanSize{
     

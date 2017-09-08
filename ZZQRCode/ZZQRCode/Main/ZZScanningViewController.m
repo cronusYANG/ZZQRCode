@@ -98,6 +98,9 @@
     
     _maskView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
     
+    _maskView.sideImage = [UIImage imageNamed:@"img_test_wide"];
+    _maskView.lineImage = [UIImage imageNamed:@"img_test_wire"];
+    
     [self setUpGesture];
     
     [self.view addSubview:_maskView];

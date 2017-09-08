@@ -12,9 +12,9 @@
 
 //扫描区域大小(正方形,只传一个值即可)(不传默认为0.8倍屏宽)
 @property (assign,nonatomic) CGFloat scanSize;
-//扫描框图片
+//扫描框图片(不传默认为一个蓝色框)
 @property (strong,nonatomic) UIImage *sideImage;
-//扫描线图片
+//扫描线图片(不传没有!!!)
 @property (strong,nonatomic) UIImage *lineImage;
 //扫描线动画时间[秒](不传默认为2秒)
 @property (assign,nonatomic) CGFloat lineDuration;
