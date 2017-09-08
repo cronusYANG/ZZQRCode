@@ -14,12 +14,13 @@
 #define kRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define kRandomColor kRGBColor(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(256))
 
-@interface ZZCreateViewController ()
+@interface ZZCreateViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *caeateBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *iconBtn;
 @property (weak, nonatomic) IBOutlet UIButton *changeColorBtn;
+@property (strong,nonatomic) UIImage *iconImage;
 
 @end
 
@@ -30,12 +31,26 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.saveBtn.hidden = YES;
+    self.iconBtn.hidden = YES;
     self.changeColorBtn.hidden = YES;
     
     [self.textView becomeFirstResponder];
+    
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0 ,0 ,30 ,30)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"save"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(rightBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
+//保存二维码到相册
+-(void)rightBarButtonClick:(UIButton *)sender{
+    
+    UIImageWriteToSavedPhotosAlbum(self.imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+    
+}
+
+//生成
 - (IBAction)createBtnClick:(id)sender {
     
     [self.textView resignFirstResponder];
@@ -43,8 +58,8 @@
     if (self.textView.text.length > 0)
     {
         self.imgView.image = [ZZQRCodeManager createQRImageWithString:self.textView.text size:qrImageSize];
-        self.saveBtn.hidden = NO;
         self.changeColorBtn.hidden = NO;
+        self.iconBtn.hidden = NO;
     }
     else
     {
@@ -56,12 +71,38 @@
     
 }
 
-//保存二维码到相册
-- (IBAction)saveBtnClick:(id)sender {
+//添加icon
+- (IBAction)iconBtnClick:(id)sender {
     
-    UIImageWriteToSavedPhotosAlbum(self.imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        controller.delegate = self;
+        
+        [self presentViewController:controller animated:YES completion:NULL];
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"设备不支持访问相册"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+        
+    }
     
 }
+
+//改变颜色
+- (IBAction)changeColorClick:(id)sender {
+    
+    self.imgView.image = [ZZQRCodeManager createQRImageWithString:self.textView.text size:qrImageSize];
+    
+    self.imgView.image = [ZZQRCodeManager changeColorForQRImage:self.imgView.image backColor:kRandomColor frontColor:kRandomColor];
+    
+    self.imgView.image = [ZZQRCodeManager addIconToCodeImage:self.imgView.image withIcon:_iconImage withScale:6];
+    
+}
+
 
 //保存回调
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
@@ -79,12 +120,13 @@
     
 }
 
-- (IBAction)changeColorClick:(id)sender {
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
-    self.imgView.image = [ZZQRCodeManager createQRImageWithString:self.textView.text size:qrImageSize];
-    
-    self.imgView.image = [ZZQRCodeManager changeColorForQRImage:self.imgView.image backColor:kRandomColor frontColor:kRandomColor];
-    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    _iconImage = info[UIImagePickerControllerOriginalImage];
+    self.imgView.image = [ZZQRCodeManager addIconToCodeImage:self.imgView.image withIcon:_iconImage withScale:6];
+        
 }
 
 #pragma mark - 绘制二维码

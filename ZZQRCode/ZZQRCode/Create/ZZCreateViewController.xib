@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,8 @@
             <connections>
                 <outlet property="caeateBtn" destination="czF-NF-Srp" id="MYQ-7z-WKH"/>
                 <outlet property="changeColorBtn" destination="saO-c5-S6P" id="t9S-yG-twF"/>
+                <outlet property="iconBtn" destination="uoT-6a-yjj" id="oGK-D6-Eo5"/>
                 <outlet property="imgView" destination="mrL-RS-puX" id="x1c-Ac-oj6"/>
-                <outlet property="saveBtn" destination="uoT-6a-yjj" id="fI7-Gn-Yhw"/>
                 <outlet property="textView" destination="9gX-pG-y0P" id="KNv-8f-7gc"/>
                 <outlet property="view" destination="TVv-rO-UMq" id="oav-bi-yri"/>
             </connections>
@@ -75,11 +75,11 @@
                         <constraint firstAttribute="width" constant="210" id="UFq-eB-aG9"/>
                         <constraint firstAttribute="height" constant="30" id="jpz-9n-Rde"/>
                     </constraints>
-                    <state key="normal" title="保存到手机相册">
+                    <state key="normal" title="添加LOGO">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="saveBtnClick:" destination="-1" eventType="touchUpInside" id="FM3-8G-hOt"/>
+                        <action selector="iconBtnClick:" destination="-1" eventType="touchUpInside" id="9Vs-cv-x4a"/>
                     </connections>
                 </button>
             </subviews>
