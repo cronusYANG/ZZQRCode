@@ -41,11 +41,11 @@
 
 //创建
 + (instancetype)maskView;
+
 //开始动画
-
 - (void)repetitionAnimation;
-//停止动画
 
+//停止动画
 - (void)stopAnimation;
 
 
