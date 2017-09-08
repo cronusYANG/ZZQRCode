@@ -12,6 +12,13 @@
 
 @property (nonatomic, strong) CALayer *lineLayer;
 
+@property (strong,nonatomic) UIImageView *sideImageView;
+@property (strong,nonatomic) UIView *topView;
+@property (strong,nonatomic) UIView *bottomView;
+@property (strong,nonatomic) UIView *leftView;
+@property (strong,nonatomic) UIView *rightView;
+
+
 @end
 
 @implementation ZZMaskView
@@ -81,7 +88,6 @@
     rightView.alpha = _allAroundAlpha;
     [self addSubview:rightView];
     
-    
     //--------布局
     
     if (!_scanSize) {
@@ -122,8 +128,86 @@
     self.lineLayer.contents = (id)_lineImage.CGImage;
     [self.layer addSublayer:self.lineLayer];
     [self repetitionAnimation];
+    
+    _sideImageView = sideImageView;
+    _topView = topView;
+    _bottomView = bottomView;
+    _leftView = leftView;
+    _rightView = rightView;
 
 }
+
+-(void)setScanSize:(CGFloat)scanSize{
+    
+    _scanSize = scanSize;
+    
+    [_sideImageView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.center.offset(0);
+        make.width.height.offset(_scanSize);
+    }];
+    
+    [_topView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.left.right.offset(0);
+        make.bottom.equalTo(_sideImageView.mas_top).offset(0);
+    }];
+    
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.bottom.left.right.offset(0);
+        make.top.equalTo(_sideImageView.mas_bottom).offset(0);
+    }];
+    
+    [_leftView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(_topView.mas_bottom).offset(0);
+        make.bottom.equalTo(_bottomView.mas_top).offset(0);
+        make.left.offset(0);
+        make.right.equalTo(_sideImageView.mas_left).offset(0);
+    }];
+    
+    [_rightView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(_topView.mas_bottom).offset(0);
+        make.bottom.equalTo(_bottomView.mas_top).offset(0);
+        make.right.offset(0);
+        make.left.equalTo(_sideImageView.mas_right).offset(0);
+    }];
+    
+    
+    
+    
+    
+}
+
+-(void)setSideImage:(UIImage *)sideImage{
+    _sideImage = sideImage;
+    _sideImageView.image = _sideImage;
+}
+
+-(void)setLineImage:(UIImage *)lineImage{
+    _lineImage = lineImage;
+    _lineLayer.contents = (id)_lineImage.CGImage;
+}
+
+-(void)setLineDuration:(CGFloat)lineDuration{
+    _lineDuration = lineDuration;
+}
+
+-(void)setAllAroundColor:(UIColor *)allAroundColor{
+    _allAroundColor = allAroundColor;
+    
+    _topView.backgroundColor = allAroundColor;
+    _bottomView.backgroundColor = allAroundColor;
+    _leftView.backgroundColor = allAroundColor;
+    _rightView.backgroundColor = allAroundColor;
+}
+
+-(void)setAllAroundAlpha:(CGFloat)allAroundAlpha{
+    _allAroundAlpha = allAroundAlpha;
+    
+    _topView.alpha = allAroundAlpha;
+    _bottomView.alpha = allAroundAlpha;
+    _leftView.alpha = allAroundAlpha;
+    _rightView.alpha = allAroundAlpha;
+}
+
 
 - (void)layoutSubviews
 {
