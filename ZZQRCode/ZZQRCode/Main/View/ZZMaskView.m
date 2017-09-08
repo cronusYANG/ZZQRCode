@@ -8,6 +8,10 @@
 
 #import "ZZMaskView.h"
 
+
+#define screenW CGRectGetWidth([UIScreen mainScreen].bounds)
+#define screenH CGRectGetHeight([UIScreen mainScreen].bounds)
+
 @interface ZZMaskView ()
 
 @property (nonatomic, strong) CALayer *lineLayer;
@@ -17,7 +21,6 @@
 @property (strong,nonatomic) UIView *bottomView;
 @property (strong,nonatomic) UIView *leftView;
 @property (strong,nonatomic) UIView *rightView;
-
 
 @end
 
@@ -62,68 +65,51 @@
     //扫描区域
     UIImageView *sideImageView = [[UIImageView alloc] init];
     sideImageView.image = _sideImage;
-    [self addSubview:sideImageView];
     
     //上
     UIView *topView = [[UIView alloc] init];
     topView.backgroundColor = _allAroundColor;
     topView.alpha = _allAroundAlpha;
-    [self addSubview:topView];
     
     //下
     UIView *bottomView = [[UIView alloc] init];
     bottomView.backgroundColor = _allAroundColor;
     bottomView.alpha = _allAroundAlpha;
-    [self addSubview:bottomView];
     
     //左
     UIView *leftView = [[UIView alloc] init];
     leftView.backgroundColor = _allAroundColor;
     leftView.alpha = _allAroundAlpha;
-    [self addSubview:leftView];
     
     //右
     UIView *rightView = [[UIView alloc] init];
     rightView.backgroundColor = _allAroundColor;
     rightView.alpha = _allAroundAlpha;
-    [self addSubview:rightView];
     
-    //--------布局
+    
+   //--------布局
     
     if (!_scanSize) {
-        _scanSize = CGRectGetWidth([UIScreen mainScreen].bounds) * 0.8;
+        _scanSize = screenW * 0.8;
     }
-   
-    [sideImageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.center.offset(0);
-        make.width.height.offset(_scanSize);
-    }];
     
-    [topView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.left.right.offset(0);
-        make.bottom.equalTo(sideImageView.mas_top).offset(0);
-    }];
+    CGFloat topAndBottomViewH = (screenH - _scanSize)/2;
+    CGFloat leftAndRightViewW = (screenW - _scanSize)/2;
+    CGFloat leftAndRightViewH = screenH - (topAndBottomViewH*2);
     
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.left.right.offset(0);
-        make.top.equalTo(sideImageView.mas_bottom).offset(0);
-    }];
+    sideImageView.frame = CGRectMake((screenW - _scanSize)/2, (screenH-_scanSize)/2, _scanSize, _scanSize);
+    topView.frame = CGRectMake(0, 0, screenW,topAndBottomViewH);
+    bottomView.frame = CGRectMake(0, screenH-topAndBottomViewH, screenW, topAndBottomViewH);
+    leftView.frame = CGRectMake(0, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
+    rightView.frame = CGRectMake(screenW-leftAndRightViewW, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
     
-    [leftView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(topView.mas_bottom).offset(0);
-        make.bottom.equalTo(bottomView.mas_top).offset(0);
-        make.left.offset(0);
-        make.right.equalTo(sideImageView.mas_left).offset(0);
-    }];
-    
-    [rightView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(topView.mas_bottom).offset(0);
-        make.bottom.equalTo(bottomView.mas_top).offset(0);
-        make.right.offset(0);
-        make.left.equalTo(sideImageView.mas_right).offset(0);
-    }];
-    
-    
+    [self addSubview:sideImageView];
+    [self addSubview:topView];
+    [self addSubview:bottomView];
+    [self addSubview:leftView];
+    [self addSubview:rightView];
+
+    //线
     self.lineLayer = [CALayer layer];
     self.lineLayer.contents = (id)_lineImage.CGImage;
     [self.layer addSublayer:self.lineLayer];
@@ -141,39 +127,17 @@
     
     _scanSize = scanSize;
     
-    [_sideImageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.center.offset(0);
-        make.width.height.offset(_scanSize);
-    }];
+    CGFloat topAndBottomViewH = (screenH - scanSize)/2;
+    CGFloat leftAndRightViewW = (screenW - scanSize)/2;
+    CGFloat leftAndRightViewH = screenH - (topAndBottomViewH*2);
     
-    [_topView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.left.right.offset(0);
-        make.bottom.equalTo(_sideImageView.mas_top).offset(0);
-    }];
+    _sideImageView.frame = CGRectMake((screenW - scanSize)/2, (screenH-scanSize)/2, scanSize, scanSize);
+    _topView.frame = CGRectMake(0, 0, screenW,topAndBottomViewH);
+    _bottomView.frame = CGRectMake(0, screenH-topAndBottomViewH, screenW, topAndBottomViewH);
+    _leftView.frame = CGRectMake(0, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
+    _rightView.frame = CGRectMake(screenW-leftAndRightViewW, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
     
-    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.left.right.offset(0);
-        make.top.equalTo(_sideImageView.mas_bottom).offset(0);
-    }];
-    
-    [_leftView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_topView.mas_bottom).offset(0);
-        make.bottom.equalTo(_bottomView.mas_top).offset(0);
-        make.left.offset(0);
-        make.right.equalTo(_sideImageView.mas_left).offset(0);
-    }];
-    
-    [_rightView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_topView.mas_bottom).offset(0);
-        make.bottom.equalTo(_bottomView.mas_top).offset(0);
-        make.right.offset(0);
-        make.left.equalTo(_sideImageView.mas_right).offset(0);
-    }];
-    
-    
-    
-    
-    
+   
 }
 
 -(void)setSideImage:(UIImage *)sideImage{
