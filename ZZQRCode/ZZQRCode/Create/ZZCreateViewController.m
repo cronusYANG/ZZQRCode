@@ -46,7 +46,12 @@
 //保存二维码到相册
 -(void)rightBarButtonClick:(UIButton *)sender{
     
-    UIImageWriteToSavedPhotosAlbum(self.imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+    if (_imgView.image) {
+        UIImageWriteToSavedPhotosAlbum(self.imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"Are you fucking kidding me?"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+    }
     
 }
 
