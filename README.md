@@ -2,10 +2,11 @@
 
 一款简单的二维码扫描,包含了手机图片识别,自动识别链接二维码并打开,生成自定义文字二维码,手势变焦,记录缓存
 新增3D Touch功能,使用能便捷
+![]http://www.cronusyang.com/wp-content/uploads/2017/11/IMG_0313.png
 
-![]https://github.com/cronusYANG/ZZQRCode/blob/master/3D_Touch.PNG
-![]https://github.com/cronusYANG/ZZQRCode/blob/master/menu1.PNG
-![]https://github.com/cronusYANG/ZZQRCode/blob/master/menu2.PNG
+![]http://www.cronusyang.com/wp-content/uploads/2017/11/IMG_0314.png
+
+![]http://www.cronusyang.com/wp-content/uploads/2017/11/IMG_0315.png
 
 对扫描界面做了单独封装,可以直接使用,支持自定义修改,包括扫描框大小,图片,扫描线,四周颜色透明图等
 使用方法:
