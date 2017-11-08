@@ -4,7 +4,7 @@
 新增3D Touch功能,使用能便捷
 
 
-<img width="175" height="311" src="http://www.cronusyang.com/wp-content/uploads/2017/11/IMG_0313.png"/>	<img width="175" height="311" src="www.cronusyang.com/wp-content/uploads/2017/11/IMG_0314.png"/>	<img width="175" height="311" src="http://www.cronusyang.com/wp-content/uploads/2017/11/IMG_0315.png"/>
+<img width="175" height="311" src="src="https://raw.githubusercontent.com/cronusYANG/ZZQRCode/master/3D_Touch.PNG"/>	<img width="175" height="311" src="src="https://raw.githubusercontent.com/cronusYANG/ZZQRCode/master/menu1.PNG"/>	<img width="175" height="311" src="https://raw.githubusercontent.com/cronusYANG/ZZQRCode/master/menu2.PNG"/>
 
 
 对扫描界面做了单独封装,可以直接使用,支持自定义修改,包括扫描框大小,图片,扫描线,四周颜色透明图等
