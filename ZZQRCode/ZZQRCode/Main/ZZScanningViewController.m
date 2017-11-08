@@ -16,6 +16,7 @@
 #import "ZZCacheViewController.h"
 #import "ZZDataManager.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "AppDelegate.h"
 
 @interface ZZScanningViewController () <AVCaptureMetadataOutputObjectsDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,optionsButtonClickDelegete>
 
@@ -34,6 +35,10 @@
 @property (strong,nonatomic) ZZMaskView *maskView;
 
 @property (strong,nonatomic) NSMutableArray *scanningArray;
+
+@property (strong,nonatomic) UIView *blckView;
+
+@property (strong,nonatomic) UIButton *guideView;
 
 @end
 
@@ -69,10 +74,13 @@
     
     [self setupUI];
     
+    [self setupNewbieGuide];
+    
     [self loadLocalData];
     
-    
     self.view.backgroundColor = [UIColor blueColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imgButtonBeTouched:) name:@"openThePicker" object:nil];
     
 }
 
@@ -427,6 +435,49 @@
     return isValid;
 }
 
+#pragma mark - 引导
+-(void)setupNewbieGuide{
+    
+    NSString *currentVersion =  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"saveVersion"];
+    
+    //  测试用 >>> 让每次都显示
+//          saveVersion = @"jksdhf";
+    
+    if (![currentVersion isEqualToString:saveVersion]) {
+        
+        [self yindao];
+        //将当前的 Version 信息缓存到沙盒
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"saveVersion"];
+
+    }
+}
+
+-(void)yindao{
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    AppDelegate *myAppDelegate = (AppDelegate *)[application delegate];
+    UIWindow *window = [myAppDelegate window] ;
+    _blckView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    _blckView.backgroundColor = [UIColor blackColor];
+    _blckView.alpha = 0.7;
+    [window addSubview:_blckView];
+    
+    UIButton *guideView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    [guideView setImage:[UIImage imageNamed:@"yindao"] forState:UIControlStateNormal];
+    [guideView addTarget:self action:@selector(dismissGuideView) forControlEvents:UIControlEventTouchUpInside];
+    [window addSubview:guideView];
+    self.guideView = guideView;
+    
+}
+-(void)dismissGuideView{
+    
+    [_blckView removeFromSuperview];
+    [_guideView removeFromSuperview];
+    _blckView = nil;
+    _guideView = nil;
+    
+}
 
 #pragma mark - 提示框
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message handler:(void (^) (UIAlertAction *action))handler;
