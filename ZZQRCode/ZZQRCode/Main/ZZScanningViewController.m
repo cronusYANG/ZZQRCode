@@ -64,6 +64,8 @@
 {
     [super viewWillDisappear:animated];
     
+    [self dismissGuideView];
+    
     [self.session stopRunning];
 }
 
