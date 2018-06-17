@@ -265,14 +265,14 @@
 }
 //生成按钮
 -(void)createButtonBeTouched:(id)sender{
-    NSLog(@"生成");
+//    NSLog(@"生成");
     ZZCreateViewController *vc = [[ZZCreateViewController alloc] init];
     [self .navigationController pushViewController:vc animated:YES];
     
 }
 //文件按钮
 -(void)fileButtonBeTouched:(id)sender{
-    NSLog(@"文件");
+//    NSLog(@"文件");
     ZZCacheViewController *vc = [[ZZCacheViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
