@@ -23,6 +23,8 @@
 @property (strong,nonatomic) UIColor *allAroundColor;
 //四周透明度(不传默认0.4)
 @property (assign,nonatomic) CGFloat allAroundAlpha;
+//文字描述
+@property(strong,nonatomic) NSString *desText;
 
 //创建
 + (instancetype)maskView;

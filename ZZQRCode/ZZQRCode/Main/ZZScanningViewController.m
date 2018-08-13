@@ -107,7 +107,7 @@
     _maskView = [ZZMaskView maskView];
     
     _maskView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
-    
+    _maskView.desText = @"Please put the QR code into the box and you can scan it automatically.";
     _maskView.sideImage = [UIImage imageNamed:@"img_test_wide"];
     _maskView.lineImage = [UIImage imageNamed:@"img_test_wire"];
     

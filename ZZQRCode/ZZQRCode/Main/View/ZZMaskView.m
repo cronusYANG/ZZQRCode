@@ -20,6 +20,7 @@
 @property (strong,nonatomic) UIView *bottomView;
 @property (strong,nonatomic) UIView *leftView;
 @property (strong,nonatomic) UIView *rightView;
+@property(strong,nonatomic) UILabel *textLabel;
 
 @end
 
@@ -77,6 +78,14 @@
     rightView.backgroundColor = _allAroundColor;
     rightView.alpha = _allAroundAlpha;
     
+    //描述
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.textColor = [UIColor whiteColor];
+    textLabel.font = [UIFont systemFontOfSize:16];
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    textLabel.numberOfLines = 0;
+    [textLabel sizeToFit];
+    
     
    //--------布局
     
@@ -93,12 +102,14 @@
     bottomView.frame = CGRectMake(0, screenH-topAndBottomViewH, screenW, topAndBottomViewH);
     leftView.frame = CGRectMake(0, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
     rightView.frame = CGRectMake(screenW-leftAndRightViewW, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
+    textLabel.frame = CGRectMake(leftAndRightViewW, screenH-topAndBottomViewH+15, screenW-leftAndRightViewW*2, 100);
     
     [self addSubview:sideImageView];
     [self addSubview:topView];
     [self addSubview:bottomView];
     [self addSubview:leftView];
     [self addSubview:rightView];
+    [self addSubview:textLabel];
 
     //线
     self.lineLayer = [CALayer layer];
@@ -111,6 +122,7 @@
     _bottomView = bottomView;
     _leftView = leftView;
     _rightView = rightView;
+    _textLabel = textLabel;
 
 }
 
@@ -165,7 +177,7 @@
     _bottomView.frame = CGRectMake(0, screenH-topAndBottomViewH, screenW, topAndBottomViewH);
     _leftView.frame = CGRectMake(0, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
     _rightView.frame = CGRectMake(screenW-leftAndRightViewW, topAndBottomViewH, leftAndRightViewW, leftAndRightViewH);
-    
+    _textLabel.frame = CGRectMake(leftAndRightViewW, screenH-topAndBottomViewH+15, screenW-leftAndRightViewW*2, 100);
    
 }
 
@@ -199,6 +211,11 @@
     _bottomView.alpha = allAroundAlpha;
     _leftView.alpha = allAroundAlpha;
     _rightView.alpha = allAroundAlpha;
+}
+
+-(void)setDesText:(NSString *)desText{
+    _desText = desText;
+    _textLabel.text = desText;
 }
 
 
